@@ -1,7 +1,7 @@
 import AllBoardsPage from "@/pages/AllBoardsPage";
 import BoardPage from "@/pages/BoardPage";
 import IssuesPage from "@/pages/IssuesPage";
-import MainPage from "@/pages/MainPage";
+import MainPage from "@/pages/mainPage/MainPage";
 import {
     Route,
     createBrowserRouter,

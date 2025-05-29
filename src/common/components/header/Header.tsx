@@ -1,18 +1,19 @@
 import { NavLink } from "react-router-dom";
+import "@/common/components/header/style.scss";
 
 const Header = () => {
     return (
-        <header>
+        <header className="header">
             <nav>
-                <ul>
+                <ul className="header__list">
                     <li>
-                        <NavLink to={"/issues"}>
+                        <NavLink to={"/issues"} className="header__link">
                             Все задачи
                         </NavLink>
                     </li>
 
                     <li>
-                        <NavLink to={"/boards"}>
+                        <NavLink to={"/boards"} className="header__link">
                             Проекты
                         </NavLink>
                     </li>
