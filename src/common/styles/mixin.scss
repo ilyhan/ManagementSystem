@@ -1,0 +1,6 @@
+
+@mixin clampText($min, $max) {
+    font-size: clamp(#{$min}px,
+        #{calc($max / 1024) * 100}vw,
+        #{$max}px);
+}
