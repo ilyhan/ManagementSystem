@@ -1,8 +1,9 @@
+import RoutesProvider from "@/router/RoutesProvider"
 
 function App() {
   return (
     <>
-      Hello World!
+      <RoutesProvider />
     </>
   )
 }
