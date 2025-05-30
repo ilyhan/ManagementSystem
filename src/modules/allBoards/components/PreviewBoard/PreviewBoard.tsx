@@ -3,14 +3,14 @@ import "@/modules/allBoards/components/PreviewBoard/style.scss";
 
 interface IPreviewBoardProps {
     id: number;
-    title: string;
+    name: string;
 };
 
-const PreviewBoard = ({ id, title }: IPreviewBoardProps) => {
+const PreviewBoard = ({ id, name }: IPreviewBoardProps) => {
     return (
         <article className="preview-board">
             <p className="preview-board__title">
-                {title}
+                {name}
             </p>
 
             <Link to={`/board/${id}`} className="preview-board__link">
