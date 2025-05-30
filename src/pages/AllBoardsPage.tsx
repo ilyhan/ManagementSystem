@@ -1,8 +1,9 @@
+import { AllBoards } from "@/modules/allBoards";
 
 const AllBoardsPage = () => {
     return (
         <>
-            All boards
+            <AllBoards />
         </>
     )
 }

@@ -3,7 +3,7 @@
 
 .header {
     height: 60px;
-    width: #{$main-width}px;
+    max-width: #{$main-width}px;
     padding-inline: 15px;
     margin: 0 auto;
     display: flex;

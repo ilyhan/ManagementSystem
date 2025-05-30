@@ -1,0 +1,31 @@
+@use "@/common/styles/styleConstants.scss" as *;
+@use "@/common/styles/mixin.scss" as *;
+
+.preview-board {
+    width: 100%;
+    border: 2px solid $color-black;
+    border-radius: $border-m;
+    padding: 20px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+
+    &__title {
+        @include clampText($text-m-main, $text-main);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 80%;
+    }
+
+    &__link {
+        @include clampText($text-m-small, $text-small);
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                color: $color-grey;
+            }
+        }
+    }
+}
