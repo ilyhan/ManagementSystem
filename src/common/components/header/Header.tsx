@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import "@/common/components/header/style.scss";
+import Button from "@/common/ui/button/Button";
 
 const Header = () => {
     return (
@@ -19,6 +20,9 @@ const Header = () => {
                     </li>
                 </ul>
             </nav>
+            <Button>
+                Добавить задачу
+            </Button>
         </header>
     )
 }
