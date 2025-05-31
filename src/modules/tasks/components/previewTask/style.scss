@@ -1,0 +1,52 @@
+
+@use "@/common/styles/styleConstants.scss" as *;
+@use "@/common/styles/mixin.scss" as *;
+
+.preview-task {
+    width: 100%;
+    border: 2px solid $color-black;
+    border-radius: $border-m;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+
+    &__content {
+        max-width: 80%;
+    }
+
+    &__title {
+        @include clampText($text-m-main, $text-main);
+        @include textOverflow;
+    }
+
+    &__board {
+        @include clampText($text-m-small, $text-small);
+        @include textOverflow;
+        color: $color-grey;
+    }
+
+    &__button {
+        @include clampText($text-m-small, $text-small);
+        @include resetButton;
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                color: $color-grey;
+            }
+        }
+    }
+}
+
+@media (max-width: $mobile) {
+    .preview-task {
+        flex-direction: column;
+        align-items: start;
+        gap: 7px;
+
+        &__content {
+            max-width: 100%;
+        }
+    }
+}
