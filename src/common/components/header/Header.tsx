@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import "@/common/components/header/style.scss";
 import Button from "@/common/ui/button/Button";
+import Input from "@/common/ui/input/Input";
 
 const Header = () => {
     return (
@@ -24,6 +25,10 @@ const Header = () => {
             <Button>
                 Добавить задачу
             </Button>
+            
+            <div style={{width:'200px'}}>
+                <Input name="name"/>
+            </div>
         </header>
     )
 }

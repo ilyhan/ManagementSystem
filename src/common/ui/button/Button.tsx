@@ -7,7 +7,7 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
 
 const Button = ({children, ...props}:IButtonProps) => {
     return(
-        <button {...props} className={`button ${props.className}`}>
+        <button {...props} className={`button ${props.className ? props.className : ''}`}>
             {children}
         </button>
     )
