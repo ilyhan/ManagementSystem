@@ -1,0 +1,29 @@
+@use "@/common/styles/mixin.scss" as *;
+@use "@/common/styles/styleConstants" as *;
+
+.textarea {
+    width: 100%;
+    height: 60px;
+    padding: 5px 15px 0px;
+    background-color: $color-input;
+    border-radius: $border-s;
+    border: 1px solid $color-black;
+    @include clampText($text-m-main, $text-main);
+    outline: none;
+    transition: $transition-slow;
+    resize: none;
+
+    &:focus {
+        border-color: $color-grey;
+    }
+
+    &::placeholder {
+        @include clampText($text-m-small, $text-small);
+        color: $color-black;
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+    }
+}
