@@ -1,6 +1,6 @@
 
 import { SelectHTMLAttributes } from "react";
-import { IOption } from "@/common/interfaces/select";
+import { IOption } from "@/common/interfaces/form";
 import "@/common/ui/input/style.scss";
 
 interface ISelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
