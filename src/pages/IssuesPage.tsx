@@ -1,8 +1,9 @@
+import { Tasks } from "@/modules/tasks";
 
 const IssuesPage = () => {
     return (
         <>
-            Issues
+            <Tasks />
         </>
     )
 }

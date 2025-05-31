@@ -1,0 +1,9 @@
+.tasks {
+    margin-block: 15px;
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
