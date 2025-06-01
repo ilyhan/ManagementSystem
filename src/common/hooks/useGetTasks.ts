@@ -1,6 +1,6 @@
 import { UseQueryResult, useQuery } from "@tanstack/react-query"
 import { IPreviewTask } from "@/common/interfaces/task";
-import { getTasks } from "@/modules/tasks/services/getTasks";
+import { getTasks } from "@/common/services/tasks";
 
 const useGetTasks = (): UseQueryResult<IPreviewTask[]> => {
     return useQuery({

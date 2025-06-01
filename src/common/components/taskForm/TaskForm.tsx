@@ -12,9 +12,10 @@ import useGetUsers from "@/common/hooks/useGetUsers";
 interface ITaskFormProps {
     onSubmit: (_: ITaskFormData) => void;
     initial: ITaskFormData;
+    mode?: 'create' | 'update';
 }
 
-const TaskForm = ({ onSubmit, initial }: ITaskFormProps) => {
+const TaskForm = ({ onSubmit, initial, mode = 'create' }: ITaskFormProps) => {
     const [formData, setFormData] = useState<ITaskFormData>(initial);
     const [boards, setBoards] = useState<IOption[]>([]);
     const [assignee, setAssignee] = useState<IOption[]>([]);
@@ -66,6 +67,7 @@ const TaskForm = ({ onSubmit, initial }: ITaskFormProps) => {
                 options={boards}
                 value={formData.boardId ?? undefined}
                 label="Проект"
+                disabled={mode === 'update'}
                 required
             />
             <Select

@@ -1,6 +1,6 @@
+import useGetTasks from "@/common/hooks/useGetTasks";
 import PreviewTask from "@/modules/tasks/components/previewTask/PreviewTask";
 import "@/modules/tasks/style.scss";
-import useGetTasks from "@/modules/tasks/hooks/useGetTasks";
 
 const Tasks = () => {
     const { data } = useGetTasks();

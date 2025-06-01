@@ -1,4 +1,6 @@
+import UpdateModal from "@/common/components/taskModal/UpdateModal";
 import "@/modules/tasks/components/previewTask/style.scss";
+import { useState } from "react";
 
 interface IPreviewTaskProps {
     id: number;
@@ -6,7 +8,17 @@ interface IPreviewTaskProps {
     boardName: string;
 }
 
-const PreviewTask = ({ title, boardName }: IPreviewTaskProps) => {
+const PreviewTask = ({ id, title, boardName }: IPreviewTaskProps) => {
+    const [open, setOpen] = useState(false);
+
+    const handleOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
     return (
         <article className="preview-task">
             <div className="preview-task__content">
@@ -19,9 +31,11 @@ const PreviewTask = ({ title, boardName }: IPreviewTaskProps) => {
                 </p>
             </div>
 
-            <button className="preview-task__button">
+            <button className="preview-task__button" onClick={handleOpen}>
                 Подробнее
             </button>
+
+            {open && <UpdateModal open={open} onClose={handleClose} taskId={id} />}
         </article>
     )
 };

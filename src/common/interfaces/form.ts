@@ -13,3 +13,11 @@ export interface ITaskFormData {
     status: EStatus | null;
     assigneeId: number | null;
 };
+
+export interface IUpdateTaskFormData {
+    title: string;
+    description: string;
+    priority: EPriority;
+    status: EStatus;
+    assigneeId: number;
+};

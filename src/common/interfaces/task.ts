@@ -25,3 +25,7 @@ export interface ITask {
 export interface IPreviewTask extends ITask {
     boardId: number;
 }
+
+export interface IResponseTask {
+    data: IPreviewTask[];
+}

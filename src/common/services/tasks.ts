@@ -1,4 +1,5 @@
-import { ITaskFormData } from "@/common/interfaces/form";
+import { ITaskFormData, IUpdateTaskFormData } from "@/common/interfaces/form";
+import { IResponseTask } from "@/common/interfaces/task";
 
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
@@ -10,3 +11,17 @@ export async function createTask(data: ITaskFormData) {
 
     return res.json();
 };
+
+export async function updateTask(data: IUpdateTaskFormData, id: number) {
+    const res = await fetch(`${baseUrl}/tasks/update/${id}`, {
+        method: "PUT",
+        body: JSON.stringify(data),
+    });
+
+    return res.json();
+}
+
+export async function getTasks(): Promise<IResponseTask> {
+    const res = await fetch(`${baseUrl}/tasks`);
+    return res.json();
+}
