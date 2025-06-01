@@ -3,16 +3,36 @@ import Button from "@/common/ui/button/Button";
 import Input from "@/common/ui/input/Input";
 import Select from "@/common/ui/select/Select";
 import Textarea from "@/common/ui/textarea/Textarea";
-import { FormEvent, useState } from "react";
-import { ITaskFormData } from "@/common/interfaces/form";
+import { FormEvent, useEffect, useState } from "react";
+import { IOption, ITaskFormData } from "@/common/interfaces/form";
 import "@/common/components/taskForm/style.scss";
+import useGetAllBoards from "@/common/hooks/useGetAllBoards";
+import useGetUsers from "@/common/hooks/useGetUsers";
 
 interface ITaskFormProps {
+    onSubmit: (_: ITaskFormData) => void;
     initial: ITaskFormData;
 }
 
-const TaskForm = ({ initial }: ITaskFormProps) => {
+const TaskForm = ({ onSubmit, initial }: ITaskFormProps) => {
     const [formData, setFormData] = useState<ITaskFormData>(initial);
+    const [boards, setBoards] = useState<IOption[]>([]);
+    const [assignee, setAssignee] = useState<IOption[]>([]);
+
+    const { data: boardsData } = useGetAllBoards();
+    const { data: assigneeData } = useGetUsers();
+
+    useEffect(() => {
+        if (boardsData) {
+            setBoards(boardsData.map(item => ({ value: item.id, title: item.name })));
+        }
+    }, [boardsData]);
+
+    useEffect(() => {
+        if (assigneeData) {
+            setAssignee(assigneeData.map(item => ({ value: item.id, title: item.fullName })));
+        }
+    }, [assigneeData]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
@@ -21,7 +41,7 @@ const TaskForm = ({ initial }: ITaskFormProps) => {
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
-        console.log(formData);
+        onSubmit(formData);
     };
 
     return (
@@ -43,6 +63,7 @@ const TaskForm = ({ initial }: ITaskFormProps) => {
             <Select
                 name="boardId"
                 onChange={handleChange}
+                options={boards}
                 value={formData.boardId ?? undefined}
                 label="Проект"
                 required
@@ -67,6 +88,7 @@ const TaskForm = ({ initial }: ITaskFormProps) => {
                 name="assigneeId"
                 onChange={handleChange}
                 value={formData.assigneeId ?? undefined}
+                options={assignee}
                 label="Исполнитель"
                 required
             />

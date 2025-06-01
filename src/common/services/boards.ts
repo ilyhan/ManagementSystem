@@ -1,4 +1,4 @@
-import { IResponsePreviewBoards } from "@/modules/allBoards/interfaces/board";
+import { IResponsePreviewBoards } from "@/common/interfaces/board";
 
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
