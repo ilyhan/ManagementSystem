@@ -1,0 +1,10 @@
+@use "@/common/styles/styleConstants.scss" as *;
+@use "@/common/styles/mixin.scss" as *;
+
+.task-modal {
+    &__title {
+        @include clampText($text-m-title, $text-title);
+        font-weight: 500;
+        margin-bottom: 10px;
+    }
+}

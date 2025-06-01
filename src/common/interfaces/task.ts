@@ -1,18 +1,31 @@
 import { IAssignee } from "@/common/interfaces/team";
 
-export type TPriority = 'Low' | 'Medium' | 'High';
-export type TStatus = 'Backlog' | 'InProgress' | 'Done';
+export enum EPriority {
+    LOW = 'Low',
+    MEDIUM = 'Medium',
+    HIGH = 'High',
+};
+
+export enum EStatus {
+    BACLOG = 'Backlog',
+    INPROGRESS = 'InProgress',
+    DONE = 'Done',
+}
 
 export interface ITask {
     id: number;
     boardName: string;
     description: string;
-    priority: TPriority;
-    status: TStatus;
+    priority: EPriority;
+    status: EStatus;
     title: string;
     assignee: IAssignee;
 }
 
-export interface IPreviewTask extends ITask{
+export interface IPreviewTask extends ITask {
     boardId: number;
+}
+
+export interface IResponseTask {
+    data: IPreviewTask[];
 }

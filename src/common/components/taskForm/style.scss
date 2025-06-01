@@ -1,0 +1,12 @@
+
+.task-form {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    &__button {
+        max-width: 150px;
+        margin-top: 15px;
+    }
+}

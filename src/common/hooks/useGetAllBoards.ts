@@ -1,6 +1,6 @@
 import { UseQueryResult, useQuery } from "@tanstack/react-query"
-import { IPreviewBoard } from "@/modules/allBoards/interfaces/board";
-import { getAllBoards } from "@/modules/allBoards/services/allBoards";
+import { IPreviewBoard } from "@/common/interfaces/board";
+import { getAllBoards } from "@/common/services/boards";
 
 const useGetAllBoards = (): UseQueryResult<IPreviewBoard[]> => {
     return useQuery({

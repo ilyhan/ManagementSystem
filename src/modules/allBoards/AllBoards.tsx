@@ -1,6 +1,6 @@
+import useGetAllBoards from "@/common/hooks/useGetAllBoards";
 import PreviewBoard from "@/modules/allBoards/components/PreviewBoard/PreviewBoard";
 import "@/modules/allBoards/style.scss";
-import useGetAllBoards from "@/modules/allBoards/hooks/useGetAllBoards";
 
 const AllBoards = () => {
     const { data } = useGetAllBoards();
