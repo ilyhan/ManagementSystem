@@ -3,9 +3,8 @@ import TaskForm from "@/common/components/taskForm/TaskForm";
 import { ITaskFormData, IUpdateTaskFormData } from "@/common/interfaces/form";
 import "@/common/components/taskModal/style.scss";
 import { useEffect } from "react";
-import { useQueryClient } from "@tanstack/react-query";
 import useUpdateTask from "@/common/hooks/useUpdateTask";
-import { IResponseTask } from "@/common/interfaces/task";
+import useGetTaskById from "@/common/hooks/useGetTaskById";
 
 interface IUpdateModalProps {
     taskId: number;
@@ -15,14 +14,7 @@ interface IUpdateModalProps {
 
 const UpdateModal = ({ taskId, open, onClose }: IUpdateModalProps) => {
     const { mutate, isSuccess } = useUpdateTask(taskId);
-
-    const queryClient = useQueryClient();
-    const allTasks = queryClient.getQueryData(['tasks']);
-    const task = (allTasks as IResponseTask).data.find(task => task.id === taskId);
-
-    if(!task) {
-        onClose();
-    }
+    const { data } = useGetTaskById(taskId);
 
     useEffect(() => {
         if (isSuccess) {
@@ -31,12 +23,12 @@ const UpdateModal = ({ taskId, open, onClose }: IUpdateModalProps) => {
     }, [isSuccess]);
 
     const initialForm: ITaskFormData = {
-        title: task?.title || '',
-        description: task?.description || '',
-        boardId: task?.boardId || null,
-        priority: task?.priority || null,
-        status: task?.status || null,
-        assigneeId: task?.assignee.id || null,
+        title: data?.title || '',
+        description: data?.description || '',
+        boardId: null,
+        priority: data?.priority || null,
+        status: data?.status || null,
+        assigneeId: data?.assignee.id || null,
     };
 
     const handleCreate = async (data: ITaskFormData) => {
@@ -54,11 +46,13 @@ const UpdateModal = ({ taskId, open, onClose }: IUpdateModalProps) => {
                 Редактирование задачи
             </h2>
 
-            <TaskForm
-                onSubmit={handleCreate}
-                initial={initialForm}
-                mode="update"
-            />
+            {data &&
+                <TaskForm
+                    onSubmit={handleCreate}
+                    initial={initialForm}
+                    mode="update"
+                />
+            }
         </Modal>
     )
 };

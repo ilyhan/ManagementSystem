@@ -1,0 +1,45 @@
+import UpdateModal from "@/common/components/taskModal/UpdateModal";
+import { EPriority } from "@/common/interfaces/task";
+import "@/modules/board/components/task/style.scss";
+import { useState } from "react";
+
+interface IBoardTaslProps {
+    id: number;
+    title: string;
+    preority: EPriority;
+}
+
+const BoardTask = ({ id, title, preority }: IBoardTaslProps) => {
+    const [open, setOpen] = useState(false);
+
+    const handleOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    return (
+        <>
+            <article
+                onClick={handleOpen}
+                className={`board-task board-task_${preority.toLowerCase()}`}
+            >
+                <p className="board-task__title">
+                    {title}
+                </p>
+            </article>
+
+            {open &&
+                <UpdateModal
+                    taskId={id}
+                    open={open}
+                    onClose={handleClose}
+                />
+            }
+        </>
+    )
+};
+
+export default BoardTask;
