@@ -1,21 +1,30 @@
+import { useDebounce } from "@/common/hooks/useDebounce";
 import Input from "@/common/ui/input/Input";
 import { useFilters } from "@/modules/tasks/hooks/useFilters";
-import { ChangeEvent } from "react";
+import { ChangeEvent, useState } from "react";
 
 const TasksSearch = () => {
-    const { setFilters, filters } = useFilters();
+    const { setFilters } = useFilters();
+    const [searchValue, setSearchValue] = useState('');
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const updateSearchValue = (val: string) => {
         setFilters(prev => ({
             ...prev,
-            search: e.target.value,
+            search: val,
         }))
+    };
+
+    const handleChangeDebounce = useDebounce(updateSearchValue, 300);
+
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setSearchValue(e.target.value);
+        handleChangeDebounce(e.target.value.trim());
     };
 
     return (
         <>
             <Input
-                value={filters.search}
+                value={searchValue}
                 onChange={handleChange}
                 placeholder="Поиск"
             />

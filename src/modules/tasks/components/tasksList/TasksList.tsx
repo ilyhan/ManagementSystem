@@ -7,6 +7,7 @@ import PreviewTask from "@/modules/tasks/components/previewTask/PreviewTask";
 const TasksList = () => {
     const { filters } = useFilters();
     const { data } = useGetTasks();
+    console.log(filters);
     
     const filterData = useMemo(() => {
         if (!data) return [];
