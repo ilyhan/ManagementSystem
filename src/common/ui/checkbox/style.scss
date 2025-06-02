@@ -41,7 +41,8 @@
 
     &__wrapper label {
         cursor: pointer;
-        display: flex;
+        display: grid;
+        grid-template-columns: 20px auto;
     }
 
     &:checked+&__icon {
