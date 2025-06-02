@@ -1,4 +1,5 @@
 import useGetTasks from "@/common/hooks/useGetTasks";
+import Accordion from "@/common/ui/accordion/Accordion";
 import PreviewTask from "@/modules/tasks/components/previewTask/PreviewTask";
 import "@/modules/tasks/style.scss";
 
