@@ -1,8 +1,9 @@
+import { Board } from "@/modules/board";
 
 const BoardPage = () => {
     return (
         <>
-            Board 
+            <Board />
         </>
     )
 }
