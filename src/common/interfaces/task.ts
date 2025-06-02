@@ -29,3 +29,11 @@ export interface IPreviewTask extends ITask {
 export interface IResponseTask {
     data: IPreviewTask[];
 }
+
+export interface IResponseBoardTasks {
+    data: ITask[];
+}
+
+export interface IResponseTaskById {
+    data: ITask;
+}

@@ -1,9 +1,10 @@
+import { ITask } from "@/common/interfaces/task";
 import "@/modules/board/components/column/style.scss";
-import Task from "@/modules/board/components/task/Task";
+import BoardTask from "@/modules/board/components/task/BoardTask";
 
 interface IBoardColumnProps {
     title: string;
-    tasks: any;
+    tasks: ITask[];
 }
 
 const Column = ({ title, tasks }: IBoardColumnProps) => {
@@ -16,9 +17,10 @@ const Column = ({ title, tasks }: IBoardColumnProps) => {
             <div className="board-column__divider"></div>
 
             <div className="board-column__container">
-                {tasks.map((task: any) => (
-                    <Task
+                {tasks.map((task: ITask) => (
+                    <BoardTask
                         key={task.id}
+                        id={task.id}
                         title={task.title}
                         preority={task.priority}
                     />

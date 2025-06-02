@@ -1,60 +1,44 @@
 import "@/modules/board/components/tasksTable/style.scss";
 import Column from "@/modules/board/components/column/Column";
-import { EPriority } from "@/common/interfaces/task";
+import { EStatus } from "@/common/interfaces/task";
+import useGetBoardTasks from "@/common/hooks/useGetBoardTasks";
+import { memo, useEffect, useState } from "react";
+import { IBoardColumn } from "@/modules/board/interfaces/board";
 
-const TasksTable = () => {
-    const initialTasks = [
-        {
-            id: 1,
-            title: 'Создать дизайн',
-            description: 'Дизайн главной страницы',
-            status: 'todo',
-            priority: EPriority.LOW,
-        },
-        {
-            id: 3,
-            title: 'Создать дизайн',
-            description: 'Дизайн главной страницы',
-            status: 'todo',
-            priority: EPriority.LOW,
-        },
-        {
-            id: 2,
-            title: 'Реализовать API',
-            description: 'Написать эндпоинты для задач',
-            status: 'in-progress',
-            priority: EPriority.HIGH,
-        },
-        {
-            id: 3,
-            title: 'Протестировать',
-            description: 'Написать unit-тесты',
-            status: 'done',
-            priority: EPriority.MEDIUM
-        }
-    ];
+interface ITasksTableProps {
+    id: number;
+}
 
-    const initialColumns = [
-        {
-            id: 'todo',
-            title: 'To Do',
-            tasks: initialTasks.filter(task => task.status === 'todo')
-        },
-        {
-            id: 'in-progress',
-            title: 'In Progress',
-            tasks: initialTasks.filter(task => task.status === 'in-progress')
-        },
-        {
-            id: 'done',
-            title: 'Done',
-            tasks: initialTasks.filter(task => task.status === 'done')
+const TasksTable = memo(({ id }: ITasksTableProps) => {
+    const [columns, setColumns] = useState<IBoardColumn[]>([]);
+    const { data, isSuccess } = useGetBoardTasks(id);
+
+    useEffect(() => {
+        if (data && isSuccess) {
+            const initialColumns = [
+                {
+                    id: 'todo',
+                    title: 'Выполнить',
+                    tasks: data.filter(task => task.status === EStatus.BACLOG)
+                },
+                {
+                    id: 'in-progress',
+                    title: 'В работе',
+                    tasks: data.filter(task => task.status === EStatus.INPROGRESS)
+                },
+                {
+                    id: 'done',
+                    title: 'Выполнено',
+                    tasks: data.filter(task => task.status === EStatus.DONE)
+                }
+            ];
+            setColumns(initialColumns);
         }
-    ];
+    }, [data, isSuccess]);
 
     return (
         <div className="tasks-table">
-            {initialColumns.map((clm) => (
+            {columns.map((clm) => (
                 <Column
                     key={clm.id}
                     title={clm.title}
@@ -63,6 +47,6 @@ const TasksTable = () => {
             ))}
         </div>
     )
-}
+})
 
 export default TasksTable;
