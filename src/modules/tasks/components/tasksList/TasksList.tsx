@@ -1,20 +1,29 @@
 import "@/modules/tasks/style.scss";
 import { useFilters } from "@/modules/tasks/hooks/useFilters";
 import useGetTasks from "@/common/hooks/useGetTasks";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import PreviewTask from "@/modules/tasks/components/previewTask/PreviewTask";
+import { useToast } from "@/common/hooks/useToasts";
+import { serverError } from "@/common/toasts/messages/serverMessage";
 
 const TasksList = () => {
     const { filters } = useFilters();
-    const { data } = useGetTasks();
-    console.log(filters);
-    
+    const { data, isError } = useGetTasks();
+
+    const toasts = useToast();
+
+    useEffect(() => {
+        if (isError) {
+            toasts.error(serverError);
+        }
+    }, [isError]);
+
     const filterData = useMemo(() => {
         if (!data) return [];
 
         return data.filter(task => {
             const searchName =
-                filters.search.length < 3 || 
+                filters.search.length < 3 ||
                 task.title.toLocaleLowerCase().includes(filters.search.toLowerCase());
 
             const statusMatch =

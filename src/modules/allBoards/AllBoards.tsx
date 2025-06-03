@@ -1,9 +1,19 @@
 import useGetAllBoards from "@/common/hooks/useGetAllBoards";
+import { useToast } from "@/common/hooks/useToasts";
+import { serverError } from "@/common/toasts/messages/serverMessage";
 import PreviewBoard from "@/modules/allBoards/components/PreviewBoard/PreviewBoard";
 import "@/modules/allBoards/style.scss";
+import { useEffect } from "react";
 
 const AllBoards = () => {
-    const { data } = useGetAllBoards();
+    const { data, isError } = useGetAllBoards();
+    const toasts = useToast();
+
+    useEffect(() => {
+        if(isError) {
+            toasts.error(serverError);
+        }
+    }, [isError]);
 
     return data && data.length
         ? <section className="boards__wrapper">
