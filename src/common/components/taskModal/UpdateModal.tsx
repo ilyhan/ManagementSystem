@@ -5,6 +5,8 @@ import "@/common/components/taskModal/style.scss";
 import { useEffect } from "react";
 import useUpdateTask from "@/common/hooks/useUpdateTask";
 import useGetTaskById from "@/common/hooks/useGetTaskById";
+import { useToast } from "@/common/hooks/useToasts";
+import { serverError } from "@/common/toasts/messages/serverMessage";
 
 interface IUpdateModalProps {
     taskId: number;
@@ -14,7 +16,16 @@ interface IUpdateModalProps {
 
 const UpdateModal = ({ taskId, open, onClose }: IUpdateModalProps) => {
     const { mutate, isSuccess } = useUpdateTask(taskId);
-    const { data } = useGetTaskById(taskId);
+    const { data, isError } = useGetTaskById(taskId);
+
+    const toasts = useToast();
+
+    useEffect(() => {
+        if(isError) {
+            toasts.error(serverError);
+            onClose();
+        }
+    }, [isError]);
 
     useEffect(() => {
         if (isSuccess) {

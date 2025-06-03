@@ -8,7 +8,7 @@ export const defaultError: ToastInfo = {
 
 export const defaultInfo: ToastInfo = {
     title: 'Информация',
-    description: 'Наш проект самый лучший'
+    description: 'Всем привет'
 };
 
 export const defaultSuccess: ToastInfo = {
