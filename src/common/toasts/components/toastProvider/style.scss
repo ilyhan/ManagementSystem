@@ -1,0 +1,19 @@
+@use "@/common/styles/styleConstants.scss" as *;
+@use "@/common/styles/mixin.scss" as *;
+
+.toasts-provider {
+    &__container {
+        position: fixed;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 284px;
+        z-index: 10000;
+    }
+
+    &__wrapper {
+        position: absolute;
+        width: 100%;
+        transition: $transition-medium;
+    }
+}

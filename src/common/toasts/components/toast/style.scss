@@ -1,0 +1,92 @@
+@use "@/common/styles/styleConstants.scss" as *;
+@use "@/common/styles/mixin.scss" as *;
+
+.toast {
+    display: grid;
+    grid-template-columns: 25px auto 25px;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding: 6px 10px;
+    width: 100%;
+    min-height: 45px;
+    overflow: hidden;
+
+    background-color: $color-total-white;
+    border-radius: $border-m;
+    border: 1px solid transparent;
+    transition: 0.3s;
+
+    &_info {
+        border-color: $color-blue;
+    }
+
+    &_error {
+        border-color: $color-red;
+    }
+
+    &_success {
+        border-color: $color-green;
+    }
+
+    &_show {
+        animation: showToast 0.3s;
+        opacity: 1;
+    }
+
+    &_remove {
+        animation: removeToast 0.2s;
+        opacity: 0;
+    }
+
+    &__title {
+        @include clampText($text-m-small, $text-small);
+        margin-bottom: 2px;
+        line-height: 1;
+    }
+
+
+    &__message {
+        @include clampText($text-m-small, $text-small);
+        color: $color-grey;
+        line-height: 1;
+    }
+
+    &__buttonWrapper {
+        justify-self: end;
+        align-self: self-start;
+    }
+
+    &__button {
+        @include resetButton;
+        font-size: 20px;
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                opacity: 0.6;
+            }
+        }
+    }
+
+    @keyframes showToast {
+        0% {
+            transform: translateY(-100px);
+        }
+
+        100% {
+            transform: translateY(0px);
+        }
+    }
+
+    @keyframes removeToast {
+        0% {
+            transform: translateY(0px);
+            opacity: 1;
+        }
+
+        100% {
+            transform: translateY(-100px);
+            opacity: 0;
+        }
+    }
+}
