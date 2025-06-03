@@ -8,6 +8,7 @@ import { IOption, ITaskFormData } from "@/common/interfaces/form";
 import "@/common/components/taskForm/style.scss";
 import useGetAllBoards from "@/common/hooks/useGetAllBoards";
 import useGetUsers from "@/common/hooks/useGetUsers";
+import { saveFormData } from "@/common/utils/saveFormData";
 
 interface ITaskFormProps {
     onSubmit: (_: ITaskFormData) => void;
@@ -22,6 +23,12 @@ const TaskForm = ({ onSubmit, initial, mode = 'create' }: ITaskFormProps) => {
 
     const { data: boardsData } = useGetAllBoards();
     const { data: assigneeData } = useGetUsers();
+
+    useEffect(() => {
+        if (mode == 'create') {
+            saveFormData(formData);
+        }
+    }, [formData]);
 
     useEffect(() => {
         if (boardsData) {
@@ -61,15 +68,16 @@ const TaskForm = ({ onSubmit, initial, mode = 'create' }: ITaskFormProps) => {
                 label="Описание"
                 required
             />
-            <Select
-                name="boardId"
-                onChange={handleChange}
-                options={boards}
-                value={formData.boardId ?? undefined}
-                label="Проект"
-                disabled={mode === 'update'}
-                required
-            />
+            {mode !== 'update' &&
+                <Select
+                    name="boardId"
+                    onChange={handleChange}
+                    options={boards}
+                    value={formData.boardId ?? undefined}
+                    label="Проект"
+                    required
+                />
+            }
             <Select
                 name="priority"
                 onChange={handleChange}

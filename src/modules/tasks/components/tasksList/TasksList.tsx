@@ -5,10 +5,11 @@ import { useEffect, useMemo } from "react";
 import PreviewTask from "@/modules/tasks/components/previewTask/PreviewTask";
 import { useToast } from "@/common/hooks/useToasts";
 import { serverError } from "@/common/toasts/messages/serverMessage";
+import Loader from "@/common/ui/loader/Loader";
 
 const TasksList = () => {
     const { filters } = useFilters();
-    const { data, isError } = useGetTasks();
+    const { data, isError, isLoading } = useGetTasks();
 
     const toasts = useToast();
 
@@ -36,19 +37,21 @@ const TasksList = () => {
         });
     }, [data, filters]);
 
-    return filterData && filterData.length
-        ? <section className="tasks">
-            <ul className="tasks__list">
-                {filterData.map((task) => (
-                    <li key={task.id}>
-                        <PreviewTask
-                            {...task}
-                        />
-                    </li>
-                ))}
-            </ul>
-        </section>
-        : <p>Задач нет</p>
+    return isLoading
+        ? <Loader />
+        : filterData && filterData.length
+            ? <section className="tasks">
+                <ul className="tasks__list">
+                    {filterData.map((task) => (
+                        <li key={task.id}>
+                            <PreviewTask
+                                {...task}
+                            />
+                        </li>
+                    ))}
+                </ul>
+            </section>
+            : <p>Задач нет</p>
 };
 
 export default TasksList;

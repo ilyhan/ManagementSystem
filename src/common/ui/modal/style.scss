@@ -28,6 +28,8 @@
         scale: 0.2;
         transition: $transition-fast;
         border-radius: $border-m;
+        max-height: 90vh;
+        overflow-y: auto;
 
         &_open {
             scale: 1;

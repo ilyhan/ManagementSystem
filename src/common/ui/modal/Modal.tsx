@@ -1,6 +1,6 @@
 import "@/common/ui/modal/style.scss";
 import { createPortal } from "react-dom";
-import { ReactNode, useEffect, useState } from "react";
+import { MouseEvent, ReactNode, useEffect, useState } from "react";
 
 interface IModalProps {
     isOpen: boolean;
@@ -11,7 +11,8 @@ interface IModalProps {
 const Modal = ({ isOpen, children, onClose }: IModalProps) => {
     const [isVisible, setIsVisible] = useState(false);
 
-    const closeModal = () => {
+    const closeModal = (e: MouseEvent<HTMLDivElement>) => {
+        e.stopPropagation();
         setIsVisible(false);
 
         setTimeout(() => {
@@ -32,12 +33,12 @@ const Modal = ({ isOpen, children, onClose }: IModalProps) => {
     return createPortal(
         <div
             className={`modal__overlay ${isVisible ? "modal__overlay_open" : ""}`}
-            onClick={closeModal}
+            onMouseDown={closeModal}
             data-testid='overlay'
         >
             <div
                 className={`modal__content ${isVisible ? "modal__content_open" : ""}`}
-                onClick={(e) => e.stopPropagation()}
+                onMouseDown={(e) => e.stopPropagation()}
             >
                 {children}
             </div>

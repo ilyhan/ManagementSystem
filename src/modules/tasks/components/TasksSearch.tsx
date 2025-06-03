@@ -22,13 +22,13 @@ const TasksSearch = () => {
     };
 
     return (
-        <>
+        <div style={{maxWidth: '200px'}}>
             <Input
                 value={searchValue}
                 onChange={handleChange}
                 placeholder="Поиск"
             />
-        </>
+        </div>
     )
 };
 

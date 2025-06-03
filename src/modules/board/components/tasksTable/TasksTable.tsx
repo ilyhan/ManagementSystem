@@ -7,6 +7,8 @@ import { IBoardColumn } from "@/modules/board/interfaces/board";
 import { useToast } from "@/common/hooks/useToasts";
 import { boardError, serverError } from "@/common/toasts/messages/serverMessage";
 import { useNavigate } from "react-router-dom";
+import AccordionColumn from "@/modules/board/components/column/AccordionColumn";
+import { getWidthOfScreen } from "@/common/utils/getWidthOfScreen";
 
 interface ITasksTableProps {
     id: number;
@@ -15,6 +17,7 @@ interface ITasksTableProps {
 const TasksTable = memo(({ id }: ITasksTableProps) => {
     const [columns, setColumns] = useState<IBoardColumn[]>([]);
     const { data, isSuccess, isError } = useGetBoardTasks(id);
+    const screen = getWidthOfScreen();
 
     const navigate = useNavigate();
     const toasts = useToast();
@@ -54,13 +57,19 @@ const TasksTable = memo(({ id }: ITasksTableProps) => {
 
     return (
         <div className="tasks-table">
-            {columns.map((clm) => (
-                <Column
-                    key={clm.id}
-                    title={clm.title}
-                    tasks={clm.tasks}
-                />
-            ))}
+            {columns.map((clm) =>
+                screen > 650
+                    ? <Column
+                        key={clm.id}
+                        title={clm.title}
+                        tasks={clm.tasks}
+                    />
+                    : <AccordionColumn
+                        key={clm.id}
+                        title={clm.title}
+                        tasks={clm.tasks}
+                    />
+            )}
         </div>
     )
 })

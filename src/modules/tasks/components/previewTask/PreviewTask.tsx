@@ -6,9 +6,10 @@ interface IPreviewTaskProps {
     id: number;
     title: string;
     boardName: string;
+    boardId: number;
 }
 
-const PreviewTask = ({ id, title, boardName }: IPreviewTaskProps) => {
+const PreviewTask = ({ id, title, boardName, boardId }: IPreviewTaskProps) => {
     const [open, setOpen] = useState(false);
 
     const handleOpen = () => {
@@ -35,7 +36,14 @@ const PreviewTask = ({ id, title, boardName }: IPreviewTaskProps) => {
                 Подробнее
             </button>
 
-            {open && <UpdateModal open={open} onClose={handleClose} taskId={id} />}
+            {open &&
+                <UpdateModal
+                    open={open}
+                    onClose={handleClose}
+                    taskId={id}
+                    boardId={boardId}
+                />
+            }
         </article>
     )
 };
