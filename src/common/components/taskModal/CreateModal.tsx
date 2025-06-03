@@ -4,6 +4,7 @@ import { ITaskFormData } from "@/common/interfaces/form";
 import "@/common/components/taskModal/style.scss";
 import useCreateTask from "@/common/hooks/useCreateTask";
 import { useEffect } from "react";
+import { getFormData } from "@/common/utils/getFormData";
 
 interface ICreateModalProps {
     open: boolean;
@@ -13,25 +14,20 @@ interface ICreateModalProps {
 const CreateModal = ({ open, onClose }: ICreateModalProps) => {
     const { mutate, isSuccess } = useCreateTask();
 
-    useEffect(()=>{
-        if(isSuccess) {
+    useEffect(() => {
+        if (isSuccess) {
             onClose();
         }
     }, [isSuccess]);
 
-    const initialForm: ITaskFormData = {
-        title: '',
-        description: '',
-        boardId: null,
-        priority: null,
-        status: null,
-        assigneeId: null,
-    };
+    const initialForm = getFormData();
 
     const handleCreate = async (data: ITaskFormData) => {
-        data.boardId = Number(data.boardId);
-        data.assigneeId = Number(data.assigneeId);
-        mutate(data);
+        mutate({
+            ...data,
+            boardId: Number(data.boardId),
+            assigneeId: Number(data.assigneeId),
+        });
     };
 
     return (

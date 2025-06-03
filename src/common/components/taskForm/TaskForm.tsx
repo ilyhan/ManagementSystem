@@ -8,6 +8,7 @@ import { IOption, ITaskFormData } from "@/common/interfaces/form";
 import "@/common/components/taskForm/style.scss";
 import useGetAllBoards from "@/common/hooks/useGetAllBoards";
 import useGetUsers from "@/common/hooks/useGetUsers";
+import { saveFormData } from "@/common/utils/saveFormData";
 
 interface ITaskFormProps {
     onSubmit: (_: ITaskFormData) => void;
@@ -22,6 +23,12 @@ const TaskForm = ({ onSubmit, initial, mode = 'create' }: ITaskFormProps) => {
 
     const { data: boardsData } = useGetAllBoards();
     const { data: assigneeData } = useGetUsers();
+
+    useEffect(() => {
+        if (mode == 'create') {
+            saveFormData(formData);
+        }
+    }, [formData]);
 
     useEffect(() => {
         if (boardsData) {
