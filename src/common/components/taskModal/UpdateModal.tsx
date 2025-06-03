@@ -60,7 +60,7 @@ const UpdateModal = ({ taskId, boardId, open, onClose }: IUpdateModalProps) => {
                 Редактирование задачи
             </h2>
 
-            {true && <Loader style={{minHeight: '100px'}}/>}
+            {isLoading && <Loader style={{minHeight: '100px'}}/>}
             {data &&
                 <TaskForm
                     onSubmit={handleCreate}
