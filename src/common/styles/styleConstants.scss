@@ -1,0 +1,53 @@
+//colors 
+//black 
+$color-total-black: rgba(0, 0, 0, 1);
+$color-black: rgba(77, 77, 77, 1);
+$color-black-modal: rgba(0, 0, 0, 0.5);
+$color-dark-label: rgba(26, 32, 44, 1);
+//white 
+$color-total-white: rgba(255, 255, 255, 1);
+$color-background: rgba(245, 245, 245, 1);
+//grey 
+$color-grey: rgba(144, 144, 144, 1);
+$color-grey-active: rgba(120, 120, 110, 1);
+$color-input: rgba(238, 238, 238, 1);
+//green
+$color-green: rgb(103, 236, 116);
+//blue
+$color-blue: rgb(118, 155, 230);
+$color-checkbox: rgba(49, 130, 206, 1);
+//red
+$color-red: rgb(231, 120, 120);
+
+//font-sizes in px
+$text-title: 20;
+$text-m-title: 16;
+
+$text-main: 16;
+$text-m-main: 14;
+
+$text-small: 14;
+$text-m-small: 12;
+
+//border
+$border-s: 5px;
+$border-m: 10px;
+$border-circle: 50%;
+
+//transitions
+$transition-slow: all 0.5s ease;
+$transition-medium: all 0.3s ease;
+$transition-fast: all 0.2s ease;
+
+//shadow
+$shadow-def: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+$shadow-red: $color-red 0px 7px 7px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+$shadow-blue: $color-blue 0px 7px 7px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+$shadow-green: $color-green 0px 7px 7px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
+//width 
+$main-width: 1054;
+
+//breakpoints
+$mobile: 450px;
+$tablet: 650px;

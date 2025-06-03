@@ -1,0 +1,16 @@
+.tasks {
+    margin-block: 15px;
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    &__filter {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-block: 10px;
+    }
+}

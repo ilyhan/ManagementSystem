@@ -1,0 +1,20 @@
+@use "@/common/styles/styleConstants.scss" as *;
+@use "@/common/styles/mixin.scss" as *;
+
+.task-modal {
+    &__title {
+        @include clampText($text-m-title, $text-title);
+        font-weight: 500;
+        margin-bottom: 10px;
+    }
+
+    &__link {
+        @include clampText($text-m-small, $text-small);
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                color: $color-grey;
+            }
+        }
+    }
+}
