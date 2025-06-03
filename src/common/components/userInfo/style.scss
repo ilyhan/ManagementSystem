@@ -1,0 +1,20 @@
+@use "@/common/styles/styleConstants.scss" as *;
+@use "@/common/styles/mixin.scss" as *;
+
+.user-info {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 7px;
+    
+    &__avatar {
+        width: 25px;
+        height: 25px;
+        border-radius: $border-circle;
+    }
+
+    &__name {
+        @include clampText($text-m-small, $text-small);
+        color: $color-grey;
+    }
+}

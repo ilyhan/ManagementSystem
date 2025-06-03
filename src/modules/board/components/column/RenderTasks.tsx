@@ -18,6 +18,7 @@ const RenderTasks = ({ tasks }: IRenderTasksProps) => {
                         id={task.id}
                         title={task.title}
                         preority={task.priority}
+                        assignee={task.assignee}
                     />
                 ))}
             </div>

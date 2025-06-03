@@ -24,6 +24,7 @@
 
     &__title {
         @include clampText($text-m-main, $text-main);
+        margin-top: 5px;
     }
 }
 
