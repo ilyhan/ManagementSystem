@@ -7,21 +7,23 @@ import useUpdateTask from "@/common/hooks/useUpdateTask";
 import useGetTaskById from "@/common/hooks/useGetTaskById";
 import { useToast } from "@/common/hooks/useToasts";
 import { serverError } from "@/common/toasts/messages/serverMessage";
+import { Link } from "react-router-dom";
 
 interface IUpdateModalProps {
     taskId: number;
+    boardId?: number;
     open: boolean;
     onClose: () => void;
 }
 
-const UpdateModal = ({ taskId, open, onClose }: IUpdateModalProps) => {
+const UpdateModal = ({ taskId, boardId, open, onClose }: IUpdateModalProps) => {
     const { mutate, isSuccess } = useUpdateTask(taskId);
     const { data, isError } = useGetTaskById(taskId);
 
     const toasts = useToast();
 
     useEffect(() => {
-        if(isError) {
+        if (isError) {
             toasts.error(serverError);
             onClose();
         }
@@ -63,6 +65,12 @@ const UpdateModal = ({ taskId, open, onClose }: IUpdateModalProps) => {
                     initial={initialForm}
                     mode="update"
                 />
+            }
+
+            {boardId &&
+                <Link to={`/board/${boardId}`} className="task-modal__link">
+                    К доске
+                </Link>
             }
         </Modal>
     )

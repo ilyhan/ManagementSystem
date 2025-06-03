@@ -68,15 +68,16 @@ const TaskForm = ({ onSubmit, initial, mode = 'create' }: ITaskFormProps) => {
                 label="Описание"
                 required
             />
-            <Select
-                name="boardId"
-                onChange={handleChange}
-                options={boards}
-                value={formData.boardId ?? undefined}
-                label="Проект"
-                disabled={mode === 'update'}
-                required
-            />
+            {mode !== 'update' &&
+                <Select
+                    name="boardId"
+                    onChange={handleChange}
+                    options={boards}
+                    value={formData.boardId ?? undefined}
+                    label="Проект"
+                    required
+                />
+            }
             <Select
                 name="priority"
                 onChange={handleChange}
