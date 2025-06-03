@@ -8,6 +8,7 @@ import useGetTaskById from "@/common/hooks/useGetTaskById";
 import { useToast } from "@/common/hooks/useToasts";
 import { serverError } from "@/common/toasts/messages/serverMessage";
 import { Link } from "react-router-dom";
+import Loader from "@/common/ui/loader/Loader";
 
 interface IUpdateModalProps {
     taskId: number;
@@ -18,7 +19,7 @@ interface IUpdateModalProps {
 
 const UpdateModal = ({ taskId, boardId, open, onClose }: IUpdateModalProps) => {
     const { mutate, isSuccess } = useUpdateTask(taskId);
-    const { data, isError } = useGetTaskById(taskId);
+    const { data, isError, isLoading } = useGetTaskById(taskId);
 
     const toasts = useToast();
 
@@ -59,6 +60,7 @@ const UpdateModal = ({ taskId, boardId, open, onClose }: IUpdateModalProps) => {
                 Редактирование задачи
             </h2>
 
+            {true && <Loader style={{minHeight: '100px'}}/>}
             {data &&
                 <TaskForm
                     onSubmit={handleCreate}
