@@ -25,5 +25,12 @@
     &__title {
         @include clampText($text-m-main, $text-main);
     }
+}
 
+@media (max-width: $tablet) {
+    .board-task {
+        &:last-of-type {
+            margin-bottom: 10px;
+        }
+    }
 }

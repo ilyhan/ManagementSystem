@@ -29,3 +29,14 @@
         }
     }
 }
+
+
+@media (max-width: $mobile) {
+    .header {
+        height: 80px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        gap: 7px;
+    }
+}
