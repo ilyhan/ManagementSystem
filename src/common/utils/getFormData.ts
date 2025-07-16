@@ -7,10 +7,10 @@ export function getFormData(): ITaskFormData {
         return {
             title: '',
             description: '',
-            boardId: null,
+            board_id: null,
             priority: null,
             status: null,
-            assigneeId: null,
+            assignee_id: null,
         };
     } else {
         return JSON.parse(formData);

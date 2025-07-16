@@ -31,7 +31,7 @@ const TasksList = () => {
                 filters.status.length === 0 || filters.status.includes(task.status);
 
             const boardMatch =
-                filters.boards.length === 0 || filters.boards.includes(task.boardName);
+                filters.boards.length === 0 || filters.boards.includes(task.boardName || '');
 
             return statusMatch && boardMatch && searchName;
         });

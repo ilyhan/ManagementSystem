@@ -6,7 +6,6 @@ const useGetBoardTasks = (id: number): UseQueryResult<ITask[]> => {
     return useQuery({
         queryKey: ['board-tasks', `${id}`],
         queryFn: () => getBoardTasks(id),
-        select: (response) => response.data,
         retry: 0,
         staleTime: 1000 * 60 * 10,
     });

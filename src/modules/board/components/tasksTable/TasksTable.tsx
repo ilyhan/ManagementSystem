@@ -25,8 +25,6 @@ const TasksTable = memo(({ id }: ITasksTableProps) => {
     useEffect(() => {
         if (isError) {
             toasts.error(serverError);
-        } else if (data?.length == 0) {
-            toasts.error(boardError);
             navigate('/boards');
         }
     }, [data, isError]);

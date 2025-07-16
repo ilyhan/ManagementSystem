@@ -39,18 +39,18 @@ const UpdateModal = ({ taskId, boardId, open, onClose }: IUpdateModalProps) => {
     const initialForm: ITaskFormData = {
         title: data?.title || '',
         description: data?.description || '',
-        boardId: null,
+        board_id: null,
         priority: data?.priority || null,
         status: data?.status || null,
-        assigneeId: data?.assignee.id || null,
+        assignee_id: data?.assignee.id || null,
     };
 
     const handleCreate = async (data: ITaskFormData) => {
-        const { boardId, ...updateData } = data; //удаляем boardId который не используется в редактировании 
+        const { board_id, ...updateData } = data; //удаляем boardId который не используется в редактировании 
 
         mutate({
             ...updateData,
-            assigneeId: Number(updateData.assigneeId),
+            assignee_id: Number(updateData.assignee_id),
         } as IUpdateTaskFormData);
     };
 

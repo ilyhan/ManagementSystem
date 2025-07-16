@@ -1,13 +1,16 @@
 import RoutesProvider from "@/router/RoutesProvider"
 import ToastsContex from "@/common/toasts/ToastsContex"
-import ToastsProvider from "./common/toasts/components/toastProvider/ToastsProvider"
+import ToastsProvider from "@/common/toasts/components/toastProvider/ToastsProvider"
+import { AuthProvider } from "@/store/authProvider"
 
 function App() {
   return (
-    <ToastsContex>
-      <ToastsProvider />
-      <RoutesProvider />
-    </ToastsContex>
+    <AuthProvider>
+      <ToastsContex>
+        <ToastsProvider />
+        <RoutesProvider />
+      </ToastsContex>
+    </AuthProvider>
   )
 }
 
