@@ -43,6 +43,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     const onLogout = () => {
+        localStorage.removeItem('token');
         setAuth({ isAuth: false, user: undefined })
     }
 
@@ -60,3 +61,4 @@ export const useAuth = () => {
     }
     return context;
 };
+
