@@ -6,7 +6,6 @@ const useGetTaskById = (id: number): UseQueryResult<ITask> => {
     return useQuery({
         queryKey: ['task', `${id}`],
         queryFn: () => getTaskById(id),
-        select: (response) => response.data,
         retry: 0,
         staleTime: 0, 
     });

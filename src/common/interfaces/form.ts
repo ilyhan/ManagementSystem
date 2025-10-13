@@ -8,10 +8,10 @@ export interface IOption {
 export interface ITaskFormData {
     title: string;
     description: string;
-    boardId: number | null;
+    board_id: number | null;
     priority: EPriority | null;
     status: EStatus | null;
-    assigneeId: number | null;
+    assignee_id: number | null;
 };
 
 export interface IUpdateTaskFormData {
@@ -19,5 +19,5 @@ export interface IUpdateTaskFormData {
     description: string;
     priority: EPriority;
     status: EStatus;
-    assigneeId: number;
+    assignee_id: number;
 };

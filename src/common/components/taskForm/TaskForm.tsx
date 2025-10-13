@@ -52,6 +52,8 @@ const TaskForm = ({ onSubmit, initial, mode = 'create' }: ITaskFormProps) => {
         onSubmit(formData);
     };
 
+    console.log(formData);
+
     return (
         <form className="task-form" onSubmit={handleSubmit}>
             <Input
@@ -70,10 +72,10 @@ const TaskForm = ({ onSubmit, initial, mode = 'create' }: ITaskFormProps) => {
             />
             {mode !== 'update' &&
                 <Select
-                    name="boardId"
+                    name="board_id"
                     onChange={handleChange}
                     options={boards}
-                    value={formData.boardId ?? undefined}
+                    value={formData.board_id ?? undefined}
                     label="Проект"
                     required
                 />
@@ -95,9 +97,9 @@ const TaskForm = ({ onSubmit, initial, mode = 'create' }: ITaskFormProps) => {
                 required
             />
             <Select
-                name="assigneeId"
+                name="assignee_id"
                 onChange={handleChange}
-                value={formData.assigneeId ?? undefined}
+                value={formData.assignee_id ?? undefined}
                 options={assignee}
                 label="Исполнитель"
                 required

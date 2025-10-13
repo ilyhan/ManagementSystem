@@ -2,13 +2,42 @@
 @use "@/common/styles/mixin.scss" as *;
 
 .header {
-    height: 60px;
+    height: 80px;
     max-width: #{$main-width}px;
     padding-inline: 15px;
     margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+
+    &__info {
+        display: flex;
+        gap: 10px;
+        justify-content: right;
+        margin-block: 5px;
+    }
+
+    &__user {
+        @include clampText($text-m-small, $text-small);
+    }
+
+    &__button {
+        @include resetButton;
+        height: 20px;
+        width: 20px;
+
+        &:hover{
+            opacity: 0.8;
+        }
+    }
+
+    &__action {
+        display: flex;
+        gap: 10px;
+    }
+
+    &__wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
 
     &__list {
         height: 100%;

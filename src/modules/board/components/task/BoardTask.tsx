@@ -14,7 +14,7 @@ interface IBoardTaslProps {
 
 const BoardTask = ({ id, title, preority, assignee }: IBoardTaslProps) => {
     const [open, setOpen] = useState(false);
-
+    console.log(id);
     const handleOpen = () => {
         setOpen(true);
     };
@@ -30,7 +30,6 @@ const BoardTask = ({ id, title, preority, assignee }: IBoardTaslProps) => {
                 className={`board-task board-task_${preority.toLowerCase()}`}
             >
                 <UserInfo
-                    avatar={assignee.avatarUrl}
                     name={assignee.fullName}
                 />
 

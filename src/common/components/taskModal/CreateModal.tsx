@@ -25,8 +25,8 @@ const CreateModal = ({ open, onClose }: ICreateModalProps) => {
     const handleCreate = async (data: ITaskFormData) => {
         mutate({
             ...data,
-            boardId: Number(data.boardId),
-            assigneeId: Number(data.assigneeId),
+            board_id: Number(data.board_id),
+            assignee_id: Number(data.assignee_id),
         });
     };
 

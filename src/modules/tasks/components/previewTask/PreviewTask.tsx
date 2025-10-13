@@ -5,13 +5,13 @@ import { useState } from "react";
 interface IPreviewTaskProps {
     id: number;
     title: string;
-    boardName: string;
-    boardId: number;
+    boardName?: string;
+    board_id: number;
 }
 
-const PreviewTask = ({ id, title, boardName, boardId }: IPreviewTaskProps) => {
+const PreviewTask = ({ id, title, boardName, board_id }: IPreviewTaskProps) => {
     const [open, setOpen] = useState(false);
-
+    console.log(id);
     const handleOpen = () => {
         setOpen(true);
     };
@@ -41,7 +41,7 @@ const PreviewTask = ({ id, title, boardName, boardId }: IPreviewTaskProps) => {
                     open={open}
                     onClose={handleClose}
                     taskId={id}
-                    boardId={boardId}
+                    boardId={board_id}
                 />
             }
         </article>
