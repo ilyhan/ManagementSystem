@@ -8,6 +8,7 @@ export async function createTask(data: ITaskFormData) {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
         },
         body: JSON.stringify(data),
     });
@@ -20,6 +21,7 @@ export async function updateTask(data: IUpdateTaskFormData, id: number) {
         method: "PUT",
         headers: {
             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
         },
         body: JSON.stringify(data),
     });
@@ -28,11 +30,19 @@ export async function updateTask(data: IUpdateTaskFormData, id: number) {
 }
 
 export async function getTasks(): Promise<ITask[]> {
-    const res = await fetch(`${baseUrl}/tasks`);
+    const res = await fetch(`${baseUrl}/tasks`, {
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+    });
     return res.json();
 }
 
 export async function getTaskById(id: number): Promise<ITask> {
-    const res = await fetch(`${baseUrl}/tasks/${id}`);
+    const res = await fetch(`${baseUrl}/tasks/${id}`, {
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+    });
     return res.json();
 }

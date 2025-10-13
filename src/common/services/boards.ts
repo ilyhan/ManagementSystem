@@ -4,12 +4,20 @@ import { ITask } from "../interfaces/task";
 const baseUrl = import.meta.env.VITE_URL;
 
 export async function getAllBoards(): Promise<IPreviewBoard[]> {
-    const res = await fetch(`${baseUrl}/boards`);
+    const res = await fetch(`${baseUrl}/boards`, {
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+    });
     return res.json();
 };
 
 export async function getBoardTasks(id: number): Promise<ITask[]> {
-    const res = await fetch(`${baseUrl}/board/tasks/${id}`);
+    const res = await fetch(`${baseUrl}/board/tasks/${id}`, {
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+    });
     return res.json();
 }
 
@@ -18,11 +26,12 @@ export async function createBoard(data: IBoardReq) {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
         },
         body: JSON.stringify(data),
     });
 
-    if(!res.ok) {
+    if (!res.ok) {
         throw new Error('Ошибка создания доски');
     }
 

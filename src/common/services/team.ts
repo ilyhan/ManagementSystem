@@ -3,6 +3,10 @@ import { IAssignee } from "@/common/interfaces/team";
 const baseUrl = import.meta.env.VITE_URL;
 
 export async function getUsers(): Promise<IAssignee[]> {
-    const res = await fetch(`${baseUrl}/users`);
+    const res = await fetch(`${baseUrl}/users`, {
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+    });
     return res.json();
 };

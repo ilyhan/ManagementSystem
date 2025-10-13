@@ -5,7 +5,7 @@ import useGetBoardTasks from "@/common/hooks/useGetBoardTasks";
 import { memo, useEffect, useState } from "react";
 import { IBoardColumn } from "@/modules/board/interfaces/board";
 import { useToast } from "@/common/hooks/useToasts";
-import { boardError, serverError } from "@/common/toasts/messages/serverMessage";
+import { serverError } from "@/common/toasts/messages/serverMessage";
 import { useNavigate } from "react-router-dom";
 import AccordionColumn from "@/modules/board/components/column/AccordionColumn";
 import { getWidthOfScreen } from "@/common/utils/getWidthOfScreen";
