@@ -54,6 +54,12 @@ const Header = () => {
                                 Проекты
                             </NavLink>
                         </li>
+
+                        <li>
+                            <NavLink to={"/employees"} className="header__link">
+                                Сотрудники
+                            </NavLink>
+                        </li>
                     </ul>
                 </nav>
 
@@ -65,7 +71,8 @@ const Header = () => {
                     {auth.user?.role == 'teamlead' &&
                         <Button onClick={handleOpenBoard}>
                             Добавить доску
-                        </Button>}
+                        </Button>
+                    }
                 </div>
 
             </div>

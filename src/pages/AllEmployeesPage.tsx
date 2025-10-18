@@ -1,8 +1,9 @@
+import { AllEmployees } from "@/modules/allEmployees";
 
 const AllEmployeesPage = () => {
     return (
         <div>
-            Employees
+            <AllEmployees />
         </div>
     )
 };
