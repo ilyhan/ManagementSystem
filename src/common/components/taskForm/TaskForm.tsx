@@ -6,35 +6,18 @@ import Textarea from "@/common/ui/textarea/Textarea";
 import { FormEvent, useEffect, useState } from "react";
 import { IOption, ITaskFormData } from "@/common/interfaces/form";
 import "@/common/components/taskForm/style.scss";
-import useGetAllBoards from "@/common/hooks/useGetAllBoards";
 import useGetUsers from "@/common/hooks/useGetUsers";
-import { saveFormData } from "@/common/utils/saveFormData";
 
 interface ITaskFormProps {
     onSubmit: (_: ITaskFormData) => void;
     initial: ITaskFormData;
-    mode?: 'create' | 'update';
 }
 
-const TaskForm = ({ onSubmit, initial, mode = 'create' }: ITaskFormProps) => {
+const TaskForm = ({ onSubmit, initial }: ITaskFormProps) => {
     const [formData, setFormData] = useState<ITaskFormData>(initial);
-    const [boards, setBoards] = useState<IOption[]>([]);
     const [assignee, setAssignee] = useState<IOption[]>([]);
 
-    const { data: boardsData } = useGetAllBoards();
     const { data: assigneeData } = useGetUsers();
-
-    useEffect(() => {
-        if (mode == 'create') {
-            saveFormData(formData);
-        }
-    }, [formData]);
-
-    useEffect(() => {
-        if (boardsData) {
-            setBoards(boardsData.map(item => ({ value: item.id, title: item.name })));
-        }
-    }, [boardsData]);
 
     useEffect(() => {
         if (assigneeData) {
@@ -70,16 +53,6 @@ const TaskForm = ({ onSubmit, initial, mode = 'create' }: ITaskFormProps) => {
                 label="Описание"
                 required
             />
-            {mode !== 'update' &&
-                <Select
-                    name="board_id"
-                    onChange={handleChange}
-                    options={boards}
-                    value={formData.board_id ?? undefined}
-                    label="Проект"
-                    required
-                />
-            }
             <Select
                 name="priority"
                 onChange={handleChange}

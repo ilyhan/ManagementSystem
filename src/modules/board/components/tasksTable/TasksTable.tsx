@@ -36,17 +36,20 @@ const TasksTable = memo(({ id }: ITasksTableProps) => {
                 {
                     id: 'todo',
                     title: 'Выполнить',
-                    tasks: data.filter(task => task.status === EStatus.BACLOG)
+                    tasks: data.filter(task => task.status === EStatus.BACKLOG),
+                    status: EStatus.BACKLOG,
                 },
                 {
                     id: 'in-progress',
                     title: 'В работе',
-                    tasks: data.filter(task => task.status === EStatus.INPROGRESS)
+                    tasks: data.filter(task => task.status === EStatus.INPROGRESS),
+                    status: EStatus.INPROGRESS,
                 },
                 {
                     id: 'done',
                     title: 'Выполнено',
-                    tasks: data.filter(task => task.status === EStatus.DONE)
+                    tasks: data.filter(task => task.status === EStatus.DONE),
+                    status: EStatus.DONE,
                 }
             ];
             setColumns(initialColumns);
@@ -59,13 +62,11 @@ const TasksTable = memo(({ id }: ITasksTableProps) => {
                 screen > 650
                     ? <Column
                         key={clm.id}
-                        title={clm.title}
-                        tasks={clm.tasks}
+                        {...clm}
                     />
                     : <AccordionColumn
                         key={clm.id}
-                        title={clm.title}
-                        tasks={clm.tasks}
+                        {...clm}
                     />
             )}
         </div>

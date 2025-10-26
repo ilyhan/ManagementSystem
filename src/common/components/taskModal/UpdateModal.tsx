@@ -65,7 +65,6 @@ const UpdateModal = ({ taskId, boardId, open, onClose }: IUpdateModalProps) => {
                 <TaskForm
                     onSubmit={handleCreate}
                     initial={initialForm}
-                    mode="update"
                 />
             }
 

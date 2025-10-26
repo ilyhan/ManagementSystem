@@ -1,24 +1,14 @@
 import { NavLink } from "react-router-dom";
 import "@/common/components/header/style.scss";
 import Button from "@/common/ui/button/Button";
-import TaskModal from "@/common/components/taskModal/CreateModal";
 import quit from "/public/images/quit.svg";
 import { useState } from "react";
 import { useAuth } from "@/store/authProvider";
-import CreateBoardModal from "../taskModal/CreateBoardModal";
+import CreateBoardModal from "@/common/components/taskModal/CreateBoardModal";
 
 const Header = () => {
     const { auth, onLogout } = useAuth();
-    const [open, setOpen] = useState(false);
     const [openBoard, setOpenBoard] = useState(false);
-
-    const handleOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
 
     const handleOpenBoard = () => {
         setOpenBoard(true);
@@ -58,10 +48,6 @@ const Header = () => {
                 </nav>
 
                 <div className="header__action">
-                    <Button onClick={handleOpen}>
-                        Добавить задачу
-                    </Button>
-
                     {auth.user?.role == 'teamlead' &&
                         <Button onClick={handleOpenBoard}>
                             Добавить доску
@@ -70,7 +56,6 @@ const Header = () => {
 
             </div>
 
-            {open && <TaskModal open={open} onClose={handleClose} />}
             {openBoard && <CreateBoardModal open={openBoard} onClose={handleCloseBoard} />}
         </header>
     )
