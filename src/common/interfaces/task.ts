@@ -7,7 +7,7 @@ export enum EPriority {
 };
 
 export enum EStatus {
-    BACLOG = 'Backlog',
+    BACKLOG = 'Backlog',
     INPROGRESS = 'InProgress',
     DONE = 'Done',
 }

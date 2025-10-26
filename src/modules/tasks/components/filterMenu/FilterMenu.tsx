@@ -34,7 +34,7 @@ const FilterMenu = () => {
                     <Checkbox
                         label="Выполнить"
                         name="backlog"
-                        onChecked={(isChecked) => handleStatusChange(EStatus.BACLOG, isChecked)}
+                        onChecked={(isChecked) => handleStatusChange(EStatus.BACKLOG, isChecked)}
                     />
                     <Checkbox
                         label="В работе"

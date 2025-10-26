@@ -9,9 +9,11 @@ import { getFormData } from "@/common/utils/getFormData";
 interface ICreateModalProps {
     open: boolean;
     onClose: () => void;
+    board_id: number;
+    defaultData?: Partial<ITaskFormData>;
 }
 
-const CreateModal = ({ open, onClose }: ICreateModalProps) => {
+const CreateModal = ({ open, onClose, board_id, defaultData }: ICreateModalProps) => {
     const { mutate, isSuccess } = useCreateTask();
 
     useEffect(() => {
@@ -20,12 +22,12 @@ const CreateModal = ({ open, onClose }: ICreateModalProps) => {
         }
     }, [isSuccess]);
 
-    const initialForm = getFormData();
+    const initialForm = getFormData(defaultData);
 
     const handleCreate = async (data: ITaskFormData) => {
         mutate({
             ...data,
-            board_id: Number(data.board_id),
+            board_id: board_id,
             assignee_id: Number(data.assignee_id),
         });
     };

@@ -7,6 +7,10 @@
     background-color: $color-total-white;
     border-radius: $border-m;
 
+    &:hover .board-column__button {
+        opacity: 1;
+    }
+
     &__title {
         @include clampText($text-m-main, $text-main);
         font-weight: 500;
@@ -24,5 +28,22 @@
         display: flex;
         flex-direction: column;
         gap: 10px;
+    }
+
+    &__controller {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    &__button {
+        @include clampText($text-m-small, $text-small);
+        @include resetButton;
+        margin: 0 auto;
+        opacity: 0;
+
+        &:hover {
+            color: $color-grey-active;
+        }
     }
 }
