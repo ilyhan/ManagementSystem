@@ -29,7 +29,11 @@ const Board = () => {
 
     return (
         <section>
-            <Header title={board?.name ?? ''} description={board?.description ?? ''} />
+            <Header 
+                title={board?.name ?? ''} 
+                description={board?.description ?? ''} 
+                boardId={Number(id)}
+            />
             <TasksTable id={Number(id)} />
         </section>
     )
