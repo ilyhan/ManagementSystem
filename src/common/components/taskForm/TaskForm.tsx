@@ -6,18 +6,19 @@ import Textarea from "@/common/ui/textarea/Textarea";
 import { FormEvent, useEffect, useState } from "react";
 import { IOption, ITaskFormData } from "@/common/interfaces/form";
 import "@/common/components/taskForm/style.scss";
-import useGetUsers from "@/common/hooks/useGetUsers";
+import useGetBoardUsers from "@/common/hooks/useGetBoardUsers";
 
 interface ITaskFormProps {
     onSubmit: (_: ITaskFormData) => void;
     initial: ITaskFormData;
+    board_id: number;
 }
 
-const TaskForm = ({ onSubmit, initial }: ITaskFormProps) => {
+const TaskForm = ({ onSubmit, initial, board_id }: ITaskFormProps) => {
     const [formData, setFormData] = useState<ITaskFormData>(initial);
     const [assignee, setAssignee] = useState<IOption[]>([]);
 
-    const { data: assigneeData } = useGetUsers();
+    const { data: assigneeData } = useGetBoardUsers(board_id);
 
     useEffect(() => {
         if (assigneeData) {
@@ -34,8 +35,6 @@ const TaskForm = ({ onSubmit, initial }: ITaskFormProps) => {
         e.preventDefault();
         onSubmit(formData);
     };
-
-    console.log(formData);
 
     return (
         <form className="task-form" onSubmit={handleSubmit}>

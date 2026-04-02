@@ -10,9 +10,10 @@ interface IBoardTaslProps {
     title: string;
     preority: EPriority;
     assignee: IAssignee;
+    currentNameId: string;
 }
 
-const BoardTask = ({ id, title, preority, assignee }: IBoardTaslProps) => {
+const BoardTask = ({ id, title, preority, assignee, currentNameId }: IBoardTaslProps) => {
     const [open, setOpen] = useState(false);
 
     const handleOpen = () => {
@@ -29,6 +30,8 @@ const BoardTask = ({ id, title, preority, assignee }: IBoardTaslProps) => {
                 onClick={handleOpen}
                 className={`board-task board-task_${preority.toLowerCase()}`}
             >
+                <p className="board-task__id">{currentNameId}</p>
+
                 <UserInfo
                     name={assignee.fullName}
                 />

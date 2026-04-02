@@ -1,0 +1,18 @@
+.add-user-modal {
+    &__wrapper {
+        position: relative;
+        width: fit-content;
+    }
+
+    &__form {
+        max-height: 50vh;
+    }
+
+    &__list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+        margin-bottom: 10px;
+    }
+}

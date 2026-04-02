@@ -4,3 +4,7 @@ export interface IAssignee {
     fullName: string;
     email?: string;
 }
+
+export interface IAssigneeSelected extends IAssignee {
+    select?: boolean;
+}

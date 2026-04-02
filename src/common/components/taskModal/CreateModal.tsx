@@ -41,6 +41,7 @@ const CreateModal = ({ open, onClose, board_id, defaultData }: ICreateModalProps
             <TaskForm
                 onSubmit={handleCreate}
                 initial={initialForm}
+                board_id={board_id}
             />
         </Modal>
     )
