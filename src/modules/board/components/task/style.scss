@@ -22,6 +22,11 @@
         border: 1px solid $color-red;
     }
 
+    &__id {
+        @include clampText($text-m-small, $text-small);
+        margin-bottom: 5px;
+    }
+
     &__title {
         @include clampText($text-m-main, $text-main);
         margin-top: 5px;

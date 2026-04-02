@@ -4,7 +4,7 @@ import { CSSProperties, ReactNode } from "react";
 interface IDropdownProps {
     open: boolean;
     children: ReactNode;
-    style: CSSProperties;
+    style?: CSSProperties;
 }
 
 const Dropdown = ({ open, children, style }: IDropdownProps) => {

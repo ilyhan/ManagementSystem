@@ -6,9 +6,16 @@ interface ICheckboxProps {
     label?: string;
     isRequired?: boolean;
     onChecked?: (_: boolean) => void;
+    checked?: boolean;
 };
 
-const Checkbox = ({ name, label = '', isRequired = false, onChecked }: ICheckboxProps) => {
+const Checkbox = ({
+    name,
+    label = '',
+    isRequired = false,
+    onChecked,
+    checked = false,
+}: ICheckboxProps) => {
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         onChecked?.(!e.target.checked);
     };
@@ -22,6 +29,7 @@ const Checkbox = ({ name, label = '', isRequired = false, onChecked }: ICheckbox
                     className="checkbox"
                     required={isRequired}
                     onChange={handleChange}
+                    checked={checked}
                 />
                 <span className="checkbox__icon">
                     <svg width="9px" height="9px" viewBox="0 0 12 12" >

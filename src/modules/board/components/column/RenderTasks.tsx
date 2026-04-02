@@ -34,6 +34,7 @@ const RenderTasks = ({ tasks, status }: IRenderTasksProps) => {
                         title={task.title}
                         preority={task.priority}
                         assignee={task.assignee}
+                        currentNameId={task.current_name}
                     />
                 ))}
             </div>

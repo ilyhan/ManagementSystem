@@ -16,6 +16,7 @@ const CreateBoardModal = ({ open, onClose }: ICreateModalProps) => {
     const { mutate, isSuccess } = useCreateBoard();
     const [formData, setFormData] = useState<IBoardReq>({
         name: '',
+        name_id: '',
         description: '',
     });
 
@@ -42,7 +43,7 @@ const CreateBoardModal = ({ open, onClose }: ICreateModalProps) => {
     return (
         <Modal isOpen={open} onClose={onClose}>
             <h2 className="task-modal__title">
-                Создание задачи
+                Создание доски
             </h2>
 
             <form
@@ -54,6 +55,14 @@ const CreateBoardModal = ({ open, onClose }: ICreateModalProps) => {
                     onChange={handleChange}
                     value={formData.name}
                     label="Название"
+                    required
+                />
+
+                <Input
+                    name="name_id"
+                    onChange={handleChange}
+                    value={formData.name_id}
+                    label="Краткое наимемнование"
                     required
                 />
 
