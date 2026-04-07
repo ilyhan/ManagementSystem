@@ -6,6 +6,7 @@ import EmployeePage from "@/pages/EmployeePage";
 import IssuesPage from "@/pages/IssuesPage";
 import LoginPage from "@/pages/LoginPage";
 import MainPage from "@/pages/mainPage/MainPage";
+import TrackingPage from "@/pages/TrackingPage";
 import {
     Route,
     createBrowserRouter,
@@ -13,6 +14,7 @@ import {
     Navigate,
     RouterProvider,
 } from "react-router-dom";
+import { RouteNames } from "./lib";
 
 export default function RoutesProvider() {
 
@@ -21,15 +23,16 @@ export default function RoutesProvider() {
             <>
                 <Route element={<MainPage />}>
                     <Route path="/" element={<Navigate to="/boards" replace />} />
-                    <Route path="boards" element={<AllBoardsPage />} />
-                    <Route path="board/:id" element={<BoardPage />} />
-                    <Route path="employees" element={<AllEmployeesPage />} />
-                    <Route path="employees/:id" element={<EmployeePage />} />
-                    <Route path="issues" element={<IssuesPage />} />
+                    <Route path={RouteNames.BOARDS} element={<AllBoardsPage />} />
+                    <Route path={RouteNames.BOARD_ID} element={<BoardPage />} />
+                    <Route path={RouteNames.EMPLOYEES} element={<AllEmployeesPage />} />
+                    <Route path={RouteNames.EMPLOYEE_ID} element={<EmployeePage />} />
+                    <Route path={RouteNames.TRACKER} element={<TrackingPage />} />
+                    <Route path={RouteNames.ISSUES} element={<IssuesPage />} />
                 </Route>
 
-                <Route path="login" element={<LoginPage />} />
-                <Route path="registration" element={<Registration />} />
+                <Route path={RouteNames.LOGIN} element={<LoginPage />} />
+                <Route path={RouteNames.REGISTRATION} element={<Registration />} />
                 <Route path="*" element={<Navigate to="/" replace />} />
             </>
         )

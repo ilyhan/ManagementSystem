@@ -5,6 +5,26 @@ import quit from "/public/images/quit.svg";
 import { useState } from "react";
 import { useAuth } from "@/store/authProvider";
 import CreateBoardModal from "@/common/components/taskModal/CreateBoardModal";
+import { RouteNames } from "@/router/lib";
+
+const NAV_LINKS = [
+    {
+        title: 'Все задачи',
+        value: RouteNames.ISSUES,
+    },
+    {
+        title: 'Проекты',
+        value: RouteNames.BOARDS,
+    },    
+    {
+        title: 'Сотрудники',
+        value: RouteNames.EMPLOYEES,
+    },    
+    {
+        title: 'Трекер',
+        value: RouteNames.TRACKER,
+    },
+];
 
 const Header = () => {
     const { auth, onLogout } = useAuth();
@@ -33,23 +53,13 @@ const Header = () => {
             <div className="header__wrapper">
                 <nav>
                     <ul className="header__list">
-                        <li>
-                            <NavLink to={"/issues"} className="header__link">
-                                Все задачи
-                            </NavLink>
-                        </li>
-
-                        <li>
-                            <NavLink to={"/boards"} className="header__link">
-                                Проекты
-                            </NavLink>
-                        </li>
-
-                        <li>
-                            <NavLink to={"/employees"} className="header__link">
-                                Сотрудники
-                            </NavLink>
-                        </li>
+                        {NAV_LINKS.map((link) => (
+                            <li>
+                                <NavLink to={link.value} className="header__link">
+                                    {link.title}
+                                </NavLink>
+                            </li>
+                        ))}
                     </ul>
                 </nav>
 
