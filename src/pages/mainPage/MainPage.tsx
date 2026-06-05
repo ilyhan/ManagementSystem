@@ -7,7 +7,7 @@ const MainPage = () => {
     const { auth } = useAuth();
     const navigate = useNavigate();
 
-    if(!auth.isAuth) {
+    if (!auth.isAuth) {
         navigate('/login');
         return null;
     }

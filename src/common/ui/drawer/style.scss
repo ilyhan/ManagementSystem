@@ -1,0 +1,45 @@
+@use "@/common/styles/mixin.scss" as *;
+@use "@/common/styles/styleConstants" as *;
+
+.drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: fit-content;
+    min-width: 300px;
+    padding: 15px;
+    border-top-left-radius: $border-m;
+    border-bottom-left-radius: $border-m;
+    will-change: transform;
+    transition: $transition-medium;
+    transition-property: transform, visibility;
+    transform: translateX(100%);
+    z-index: 1000;
+    background-color: $colot-drawer;
+    visibility: hidden;
+
+    &--active {
+        transform: translateX(0);
+        visibility: visible;
+    }
+
+    &__close {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        height: 30px;
+        width: 30px;
+        border: 1px solid black;
+        background: none;
+        border-radius: 100%;
+        transition: $transition-fast;
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+}
