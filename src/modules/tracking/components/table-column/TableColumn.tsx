@@ -1,50 +1,45 @@
 import { clsx } from '@/common/utils/lib';
+import { IDayTracking } from '@/common/interfaces/tracking';
 import './style.scss';
-
-// type Track = {
-//     id: number;
-//     title: string;
-//     timeStart: number;
-//     timeEnd: number;
-//     date: string;
-// }
+import { CreateTrackModal } from '../create-track-modal/CreateTrackModal';
+import { useState } from 'react';
 
 type TableColumnProps = {
-    // tracks: Track[];
     isWeekend?: boolean;
+    date: number;
+    weekDay: string;
+    fullDate: Date;
+    tracks?: IDayTracking[];
 }
 
-export const TableColumn = ({ isWeekend = false}: TableColumnProps) => {
+export const TableColumn = ({ isWeekend = false, date, weekDay, fullDate, tracks }: TableColumnProps) => {
+    const [open, setOpen] = useState(false);
+
     return (
-        <div className='table-column'> 
+        <div className='table-column'>
             <div className={clsx('table-column__header', isWeekend && 'table-column__header--weekend')}>
-                <p>пн</p>
-                <p className='table-column__date'>17</p>
+                <p>{weekDay}</p>
+                <p className='table-column__date'>{date}</p>
             </div>
 
             <div className='table-column__tracking'>
-                <div className='table-column__track'>
-                    <div className='table-column__time'>
-                        <p>10:00</p> - <p>14:00</p>
+                {tracks?.map((track) => (
+                    <div key={track.id} className='table-column__track'>
+                        <div className='table-column__time'>
+                            затрачено: {track.reservedhours} ч.
+                        </div>
+                        <div className='table-column__content'>
+                            {track.description}
+                        </div>
                     </div>
-                    <div className='table-column__content'>
-                        sdcsdc sdcsd csdc sdc sdcdcsd csdc sd
-                    </div>
-                </div>
+                ))}
 
-                <div className='table-column__track'>
-                    <div className='table-column__time'>
-                        <p>14:00</p> - <p>18:00</p>
-                    </div>
-                    <div className='table-column__content'>
-                        sdcsdc sdcsd csdc sdc sdcdcsd csdc sd
-                    </div>
-                </div>
-
-                <button className='table-column__button'>
+                <button className='table-column__button' onClick={() => setOpen(true)}>
                     + добавить трек
                 </button>
             </div>
+
+            <CreateTrackModal date={fullDate} open={open} onClose={() => setOpen(false)} />
         </div>
     )
 }
