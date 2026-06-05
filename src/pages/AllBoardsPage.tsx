@@ -1,11 +1,11 @@
-import { AllBoards } from "@/modules/allBoards";
+import { AllBoards } from '@/modules/allBoards';
 
 const AllBoardsPage = () => {
-    return (
-        <>
-            <AllBoards />
-        </>
-    )
-}
+  return (
+    <>
+      <AllBoards />
+    </>
+  );
+};
 
 export default AllBoardsPage;

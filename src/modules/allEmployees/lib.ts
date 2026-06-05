@@ -1,10 +1,9 @@
-
 enum Colors {
-    'red' = 0,
-    'green' = 1,
-    'blue' = 2,
-};
+  'red' = 0,
+  'green' = 1,
+  'blue' = 2,
+}
 
 export function getAvatarColor(num: number) {
-    return Colors[num % 3];
+  return Colors[num % 3];
 }

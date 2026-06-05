@@ -1,11 +1,11 @@
-import { Tasks } from "@/modules/tasks";
+import { Tasks } from '@/modules/tasks';
 
 const IssuesPage = () => {
-    return (
-        <>
-            <Tasks />
-        </>
-    )
-}
+  return (
+    <>
+      <Tasks />
+    </>
+  );
+};
 
 export default IssuesPage;

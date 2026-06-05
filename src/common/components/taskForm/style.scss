@@ -1,19 +1,19 @@
-@use "@/common/styles/styleConstants.scss" as *;
+@use '@/common/styles/styleConstants.scss' as *;
 
 .task-form {
-    width: 400px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 
-    &__button {
-        max-width: 150px;
-        margin-top: 15px;
-    }
+  &__button {
+    max-width: 150px;
+    margin-top: 15px;
+  }
 }
 
 @media (max-width: $mobile) {
-    .task-form {
-        width: 80vw;
-    }
+  .task-form {
+    width: 80vw;
+  }
 }

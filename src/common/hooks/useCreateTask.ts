@@ -1,32 +1,32 @@
-import { UseMutationResult, useMutation, useQueryClient } from "@tanstack/react-query"
-import { ITaskFormData } from "@/common/interfaces/form";
-import { createTask } from "@/common/services/tasks";
-import { useToast } from "@/common/hooks/useToasts";
-import { createSuccess } from "@/common/toasts/messages/serverMessage";
-import { clearFormData } from "@/common/utils/clearFormData";
+import { UseMutationResult, useMutation, useQueryClient } from '@tanstack/react-query';
+import { ITaskFormData } from '@/common/interfaces/form';
+import { createTask } from '@/common/services/tasks';
+import { useToast } from '@/common/hooks/useToasts';
+import { createSuccess } from '@/common/toasts/messages/serverMessage';
+import { clearFormData } from '@/common/utils/clearFormData';
 
 const useCreateTask = (): UseMutationResult<void, Error, ITaskFormData> => {
-    const queryClient = useQueryClient();
-    const toasts = useToast();
+  const queryClient = useQueryClient();
+  const toasts = useToast();
 
-    return useMutation({
-        mutationFn: (formdata: ITaskFormData) => createTask(formdata),
-        onSuccess: () => {
-            queryClient.invalidateQueries({
-                queryKey: ['board-tasks']
-            });
+  return useMutation({
+    mutationFn: (formdata: ITaskFormData) => createTask(formdata),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['board-tasks'],
+      });
 
-            queryClient.invalidateQueries({
-                queryKey: ['tasks']
-            });
+      queryClient.invalidateQueries({
+        queryKey: ['tasks'],
+      });
 
-            toasts.success(createSuccess);
-            clearFormData();
-        },
-        onError: () => {
-            toasts.error();
-        }
-    });
-}
+      toasts.success(createSuccess);
+      clearFormData();
+    },
+    onError: () => {
+      toasts.error();
+    },
+  });
+};
 
 export default useCreateTask;

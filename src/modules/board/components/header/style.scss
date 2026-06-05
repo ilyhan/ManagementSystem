@@ -1,15 +1,15 @@
-@use "@/common/styles/styleConstants.scss" as *;
-@use "@/common/styles/mixin.scss" as *;
+@use '@/common/styles/styleConstants.scss' as *;
+@use '@/common/styles/mixin.scss' as *;
 
 .board-header {
-    &__title {
-        @include clampText($text-m-title, $text-title);
-        color: $color-total-black;
-        font-weight: 500;
-        margin-bottom: 5px;
-    }
+  &__title {
+    @include clampText($text-m-title, $text-title);
+    color: $color-total-black;
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
 
-    &__description {
-        @include clampText($text-m-main, $text-main);
-    }
+  &__description {
+    @include clampText($text-m-main, $text-main);
+  }
 }

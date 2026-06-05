@@ -1,4 +1,3 @@
-
 export const clsx = (...args: unknown[]): string => {
-    return args.filter((item) => typeof item === 'string').join(' ');
-}
+  return args.filter((item) => typeof item === 'string').join(' ');
+};

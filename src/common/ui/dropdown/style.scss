@@ -1,18 +1,18 @@
-@use "@/common/styles/mixin.scss" as *;
-@use "@/common/styles/styleConstants" as *;
+@use '@/common/styles/mixin.scss' as *;
+@use '@/common/styles/styleConstants' as *;
 
 .dropdown {
-    position: absolute;
-    transition: $transition-fast;
-    z-index: 100;
+  position: absolute;
+  transition: $transition-fast;
+  z-index: 100;
 
-    &_close {
-        opacity: 0;
-        visibility: hidden;
-    }
+  &_close {
+    opacity: 0;
+    visibility: hidden;
+  }
 
-    &_open {
-        opacity: 1;
-        visibility: visible;
-    }
+  &_open {
+    opacity: 1;
+    visibility: visible;
+  }
 }

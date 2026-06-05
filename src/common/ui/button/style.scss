@@ -1,40 +1,40 @@
-@use "@/common/styles/styleConstants.scss" as *;
-@use "@/common/styles/mixin.scss" as *;
+@use '@/common/styles/styleConstants.scss' as *;
+@use '@/common/styles/mixin.scss' as *;
 
 .button {
-    @include resetButton;
-    @include clampText($text-m-small, $text-small);
-    position: relative;
-    border: 2px solid $color-black;
-    border-radius: $border-s;
-    padding: 7px 13px;
-    overflow: hidden;
+  @include resetButton;
+  @include clampText($text-m-small, $text-small);
+  position: relative;
+  border: 2px solid $color-black;
+  border-radius: $border-s;
+  padding: 7px 13px;
+  overflow: hidden;
 
-    &::before {
-        content: "";
-        position: absolute;
-        top: 100%;
-        right: 100%;
-        background-color: $color-black;
-        width: 150%;
-        height: 200%;
-        border-radius: 50%;
-        transition: $transition-slow;
-        z-index: -1;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    right: 100%;
+    background-color: $color-black;
+    width: 150%;
+    height: 200%;
+    border-radius: 50%;
+    transition: $transition-slow;
+    z-index: -1;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      color: $color-total-white;
+
+      &::before {
+        top: -45%;
+        right: -25%;
+      }
     }
+  }
 
-    @media (hover: hover) and (pointer: fine) {
-        &:hover{
-            color: $color-total-white;
-
-            &::before {
-                top: -45%;
-                right: -25%;
-            }
-        }
-    }
-
-    &:active {
-        scale: 0.98;
-    }
+  &:active {
+    scale: 0.98;
+  }
 }

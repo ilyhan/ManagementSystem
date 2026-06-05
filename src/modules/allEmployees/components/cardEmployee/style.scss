@@ -1,65 +1,65 @@
-@use "@/common/styles/styleConstants.scss" as *;
-@use "@/common/styles/mixin.scss" as *;
+@use '@/common/styles/styleConstants.scss' as *;
+@use '@/common/styles/mixin.scss' as *;
 
 .card-employee {
-    &__wrapper {
-        padding: 15px;
-        border: 1px solid $color-black;
-        border-radius: $border-m;
-        width: 100%;
+  &__wrapper {
+    padding: 15px;
+    border: 1px solid $color-black;
+    border-radius: $border-m;
+    width: 100%;
+  }
+
+  &__avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: #{$text-small}px;
+    height: 35px;
+    width: 35px;
+    border-radius: $border-circle;
+
+    &_red {
+      background-color: $color-red;
     }
 
-    &__avatar {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: #{$text-small}px;
-        height: 35px;
-        width: 35px;
-        border-radius: $border-circle;
-
-        &_red {
-            background-color: $color-red;
-        }
-
-        &_green {
-            background-color: $color-green;
-        }
-
-        &_blue {
-            background-color: $color-blue;
-        }
+    &_green {
+      background-color: $color-green;
     }
 
-    &__name {
-        @include clampText($text-m-small, $text-small);
-        font-weight: 500;
+    &_blue {
+      background-color: $color-blue;
     }
+  }
 
-    &__grade {
-        font-size: #{$text-m-small}px;
-        color: $color-grey;
-        margin-top: -5px;
-    }
+  &__name {
+    @include clampText($text-m-small, $text-small);
+    font-weight: 500;
+  }
 
-    &__header {
-        display: flex;
-        align-items: center;
-        justify-content: start;
-        gap: 10px;
-    }
+  &__grade {
+    font-size: #{$text-m-small}px;
+    color: $color-grey;
+    margin-top: -5px;
+  }
 
-    &__contact{
-        font-size: #{$text-m-small}px;
-        margin-top: 15px;
-    }
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+  }
 
-    &__contact-info {
-        display: flex;
-    }
+  &__contact {
+    font-size: #{$text-m-small}px;
+    margin-top: 15px;
+  }
 
-    &__contact-type {
-        width: 80px;
-        color: $color-grey;
-    }
+  &__contact-info {
+    display: flex;
+  }
+
+  &__contact-type {
+    width: 80px;
+    color: $color-grey;
+  }
 }

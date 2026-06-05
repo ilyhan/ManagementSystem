@@ -1,14 +1,14 @@
-import { UseQueryResult, useQuery } from "@tanstack/react-query"
-import { ITask } from "@/common/interfaces/task";
-import { getTaskById } from "@/common/services/tasks";
+import { UseQueryResult, useQuery } from '@tanstack/react-query';
+import { ITask } from '@/common/interfaces/task';
+import { getTaskById } from '@/common/services/tasks';
 
 const useGetTaskById = (id: number): UseQueryResult<ITask> => {
-    return useQuery({
-        queryKey: ['task', `${id}`],
-        queryFn: () => getTaskById(id),
-        retry: 0,
-        staleTime: 0, 
-    });
-}
+  return useQuery({
+    queryKey: ['task', `${id}`],
+    queryFn: () => getTaskById(id),
+    retry: 0,
+    staleTime: 0,
+  });
+};
 
 export default useGetTaskById;

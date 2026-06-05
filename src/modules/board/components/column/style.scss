@@ -1,49 +1,49 @@
-@use "@/common/styles/styleConstants.scss" as *;
-@use "@/common/styles/mixin.scss" as *;
+@use '@/common/styles/styleConstants.scss' as *;
+@use '@/common/styles/mixin.scss' as *;
 
 .board-column {
+  width: 100%;
+  padding: 15px 15px 25px;
+  background-color: $color-total-white;
+  border-radius: $border-m;
+
+  &:hover .board-column__button {
+    opacity: 1;
+  }
+
+  &__title {
+    @include clampText($text-m-main, $text-main);
+    font-weight: 500;
+  }
+
+  &__divider {
     width: 100%;
-    padding: 15px 15px 25px;
-    background-color: $color-total-white;
+    height: 1px;
     border-radius: $border-m;
+    background-color: $color-grey;
+    margin-block: 15px;
+  }
 
-    &:hover .board-column__button {
-        opacity: 1;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__controller {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  &__button {
+    @include clampText($text-m-small, $text-small);
+    @include resetButton;
+    margin: 0 auto;
+    opacity: 0;
+
+    &:hover {
+      color: $color-grey-active;
     }
-
-    &__title {
-        @include clampText($text-m-main, $text-main);
-        font-weight: 500;
-    }
-
-    &__divider {
-        width: 100%;
-        height: 1px;
-        border-radius: $border-m;
-        background-color: $color-grey;
-        margin-block: 15px;
-    }
-
-    &__container {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    &__controller {
-        display: flex;
-        justify-content: center;
-        margin-top: 10px;
-    }
-
-    &__button {
-        @include clampText($text-m-small, $text-small);
-        @include resetButton;
-        margin: 0 auto;
-        opacity: 0;
-
-        &:hover {
-            color: $color-grey-active;
-        }
-    }
+  }
 }

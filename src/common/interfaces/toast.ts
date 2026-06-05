@@ -1,12 +1,12 @@
 export interface ToastInfo {
-    title?: string;
-    description?: string;
-};
+  title?: string;
+  description?: string;
+}
 
-export type ToastType = 'success' | 'info' | 'error' ;
+export type ToastType = 'success' | 'info' | 'error';
 
 export interface IToast {
-    message?: ToastInfo;
-    id: number;
-    type: ToastType;
-};
+  message?: ToastInfo;
+  id: number;
+  type: ToastType;
+}

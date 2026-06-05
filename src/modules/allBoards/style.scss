@@ -1,12 +1,11 @@
+.boards {
+  &__wrapper {
+    margin-block: 15px;
+  }
 
-.boards{
-    &__wrapper {
-        margin-block: 15px;
-    }
-
-    &__list {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 }

@@ -1,1 +1,1 @@
-export {Tracking} from './Tracking';
+export { Tracking } from './Tracking';

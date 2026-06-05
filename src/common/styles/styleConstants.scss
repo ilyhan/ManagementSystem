@@ -1,13 +1,13 @@
-//colors 
-//black 
+//colors
+//black
 $color-total-black: rgba(0, 0, 0, 1);
 $color-black: rgba(77, 77, 77, 1);
 $color-black-modal: rgba(0, 0, 0, 0.5);
 $color-dark-label: rgba(26, 32, 44, 1);
-//white 
+//white
 $color-total-white: rgba(255, 255, 255, 1);
 $color-background: rgba(245, 245, 245, 1);
-//grey 
+//grey
 $color-grey: rgba(144, 144, 144, 1);
 $color-grey-active: rgba(120, 120, 110, 1);
 $color-grey-lightest: rgb(230, 230, 230);
@@ -44,12 +44,20 @@ $transition-medium: all 0.3s ease;
 $transition-fast: all 0.2s ease;
 
 //shadow
-$shadow-def: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-$shadow-red: $color-red 0px 7px 7px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-$shadow-blue: $color-blue 0px 7px 7px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-$shadow-green: $color-green 0px 7px 7px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+$shadow-def:
+  rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+  rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+$shadow-red:
+  $color-red 0px 7px 7px -5px,
+  rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+$shadow-blue:
+  $color-blue 0px 7px 7px -5px,
+  rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+$shadow-green:
+  $color-green 0px 7px 7px -5px,
+  rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 
-//width 
+//width
 $main-width: 1254;
 
 //breakpoints

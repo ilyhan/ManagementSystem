@@ -1,21 +1,18 @@
-
 @mixin clampText($min, $max) {
-    font-size: clamp(#{$min}px,
-        #{calc($max / 1224) * 100}vw,
-        #{$max}px);
+  font-size: clamp(#{$min}px, #{calc($max / 1224) * 100}vw, #{$max}px);
 }
 
 @mixin resetButton {
-    padding: 0;  
-    border: none;  
-    color: inherit;  
-    background-color: transparent;  
-    cursor: pointer; 
+  padding: 0;
+  border: none;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 @mixin textOverflow {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
 }

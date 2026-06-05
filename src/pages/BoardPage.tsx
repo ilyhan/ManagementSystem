@@ -1,16 +1,16 @@
-import { Board } from "@/modules/board";
-import { useEffect } from "react";
+import { Board } from '@/modules/board';
+import { useEffect } from 'react';
 
 const BoardPage = () => {
-    useEffect(() => {
-        scrollTo({ top: 0, behavior: 'instant' });
-    }, []);
+  useEffect(() => {
+    scrollTo({ top: 0, behavior: 'instant' });
+  }, []);
 
-    return (
-        <>
-            <Board />
-        </>
-    )
-}
+  return (
+    <>
+      <Board />
+    </>
+  );
+};
 
 export default BoardPage;

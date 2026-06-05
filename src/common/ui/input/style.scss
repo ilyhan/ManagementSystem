@@ -1,28 +1,28 @@
-@use "@/common/styles/mixin.scss" as *;
-@use "@/common/styles/styleConstants" as *;
+@use '@/common/styles/mixin.scss' as *;
+@use '@/common/styles/styleConstants' as *;
 
 .input {
-    width: 100%;
-    height: 35px;
-    padding-inline: 15px;
-    background-color: $color-input;
-    border-radius: $border-s;
-    border: 1px solid $color-black;
-    @include clampText($text-m-main, $text-main);
-    outline: none;
-    transition: $transition-slow;
+  width: 100%;
+  height: 35px;
+  padding-inline: 15px;
+  background-color: $color-input;
+  border-radius: $border-s;
+  border: 1px solid $color-black;
+  @include clampText($text-m-main, $text-main);
+  outline: none;
+  transition: $transition-slow;
 
-    &:focus {
-        border-color: $color-grey;
-    }
+  &:focus {
+    border-color: $color-grey;
+  }
 
-    &::placeholder {
-        @include clampText($text-m-small, $text-small);
-        color: $color-black;
-    }
+  &::placeholder {
+    @include clampText($text-m-small, $text-small);
+    color: $color-black;
+  }
 
-    &__container {
-        display: flex;
-        flex-direction: column;
-    }
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
 }

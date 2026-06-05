@@ -1,25 +1,25 @@
-@use "@/common/styles/styleConstants.scss" as *;
-@use "@/common/styles/mixin.scss" as *;
+@use '@/common/styles/styleConstants.scss' as *;
+@use '@/common/styles/mixin.scss' as *;
 
 .filter-menu {
-    background-color: $color-total-white;
-    border-radius: $border-m;
-    box-shadow: $shadow-def;
-    width: 300px;
-    padding: 20px;
+  background-color: $color-total-white;
+  border-radius: $border-m;
+  box-shadow: $shadow-def;
+  width: 300px;
+  padding: 20px;
 
-    &__list {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        max-height: 250px;
-        overflow-y: auto;
-        overflow-x: hidden;
-    }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 250px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
 
-    &__button {
-        margin-top: 10px;
-        padding: 5px 7px;
-        z-index: 1000;
-    }
+  &__button {
+    margin-top: 10px;
+    padding: 5px 7px;
+    z-index: 1000;
+  }
 }

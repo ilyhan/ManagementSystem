@@ -1,4 +1,3 @@
-
 export function clearFormData() {
-    localStorage.removeItem('create-form');
+  localStorage.removeItem('create-form');
 }

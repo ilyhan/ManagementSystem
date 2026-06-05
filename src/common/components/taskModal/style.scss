@@ -1,38 +1,38 @@
-@use "@/common/styles/styleConstants.scss" as *;
-@use "@/common/styles/mixin.scss" as *;
+@use '@/common/styles/styleConstants.scss' as *;
+@use '@/common/styles/mixin.scss' as *;
 
 .task-modal {
-    &__title {
-        @include clampText($text-m-title, $text-title);
-        font-weight: 500;
-        margin-bottom: 10px;
+  &__title {
+    @include clampText($text-m-title, $text-title);
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  &__link {
+    @include clampText($text-m-small, $text-small);
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        color: $color-grey;
+      }
     }
+  }
 
-    &__link {
-        @include clampText($text-m-small, $text-small);
+  &__form {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
 
-        @media (hover: hover) and (pointer: fine) {
-            &:hover {
-                color: $color-grey;
-            }
-        }
-    }
+  &__button {
+    max-width: 150px;
+    margin-top: 15px;
+  }
 
+  @media (max-width: $mobile) {
     &__form {
-        width: 400px;
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
+      width: 80vw;
     }
-    
-    &__button {
-        max-width: 150px;
-        margin-top: 15px;
-    }
-
-    @media (max-width: $mobile) {
-        &__form {
-            width: 80vw;
-        }
-    }
+  }
 }

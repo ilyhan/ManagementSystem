@@ -1,16 +1,16 @@
-import { ButtonHTMLAttributes, ReactNode } from "react";
-import "@/common/ui/button/style.scss";
+import { ButtonHTMLAttributes, ReactNode } from 'react';
+import '@/common/ui/button/style.scss';
 
-interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
-    children: ReactNode;
-};
+interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  children: ReactNode;
+}
 
-const Button = ({children, ...props}:IButtonProps) => {
-    return(
-        <button {...props} className={`button ${props.className ? props.className : ''}`}>
-            {children}
-        </button>
-    )
+const Button = ({ children, ...props }: IButtonProps) => {
+  return (
+    <button {...props} className={`button ${props.className ? props.className : ''}`}>
+      {children}
+    </button>
+  );
 };
 
 export default Button;

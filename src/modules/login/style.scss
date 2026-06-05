@@ -1,38 +1,38 @@
-@use "@/common/styles/styleConstants.scss" as *;
-@use "@/common/styles/mixin.scss" as *;
+@use '@/common/styles/styleConstants.scss' as *;
+@use '@/common/styles/mixin.scss' as *;
 
 .login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 10px;
+
+  &__title {
+    @include clampText($text-m-title, $text-title);
+    font-weight: 500;
+  }
+
+  &__form {
+    width: 250px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    gap: 10px;
+    gap: 7px;
+  }
 
-    &__title {
-        @include clampText($text-m-title, $text-title);
-        font-weight: 500;
+  &__button {
+    margin-top: 10px;
+  }
+
+  &__link {
+    @include clampText($text-m-small, $text-small);
+    text-align: center;
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        color: $color-grey;
+      }
     }
-
-    &__form {
-        width: 250px;
-        display: flex;
-        flex-direction: column;
-        gap: 7px;
-    }
-
-    &__button {
-        margin-top: 10px;
-    }
-
-    &__link {
-        @include clampText($text-m-small, $text-small);
-        text-align: center;
-
-        @media (hover: hover) and (pointer: fine) {
-            &:hover {
-                color: $color-grey;
-            }
-        }
-    }
+  }
 }

@@ -1,9 +1,8 @@
-
-import { createPortal } from "react-dom";
-import { useEffect, useRef, useState } from "react";
-import Toast from "@/common/toasts/components/toast/Toast";
-import { useToastsContext } from "@/common/hooks/useToastsContext";
-import "@/common/toasts/components/toastProvider/style.scss";
+import { createPortal } from 'react-dom';
+import { useEffect, useRef, useState } from 'react';
+import Toast from '@/common/toasts/components/toast/Toast';
+import { useToastsContext } from '@/common/hooks/useToastsContext';
+import '@/common/toasts/components/toastProvider/style.scss';
 
 export default function ToastsProvider() {
   const { toasts } = useToastsContext();
@@ -35,17 +34,13 @@ export default function ToastsProvider() {
           }}
           style={{
             top: `${offsets[index] || 0}px`,
-            zIndex: -(offsets[index] || 0)
+            zIndex: -(offsets[index] || 0),
           }}
         >
-          <Toast
-            message={toast.message}
-            id={toast.id}
-            type={toast.type}
-          />
+          <Toast message={toast.message} id={toast.id} type={toast.type} />
         </div>
       ))}
     </div>,
-    document.getElementById('root')!
+    document.getElementById('root')!,
   );
 }

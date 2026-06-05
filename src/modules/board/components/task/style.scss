@@ -1,42 +1,42 @@
-@use "@/common/styles/styleConstants.scss" as *;
-@use "@/common/styles/mixin.scss" as *;
+@use '@/common/styles/styleConstants.scss' as *;
+@use '@/common/styles/mixin.scss' as *;
 
 .board-task {
-    width: 100%;
-    padding: 15px;
-    border-radius: $border-s;
-    cursor: pointer;
+  width: 100%;
+  padding: 15px;
+  border-radius: $border-s;
+  cursor: pointer;
 
-    &_low {
-        box-shadow: $shadow-green;
-        border: 1px solid $color-green;
-    }
+  &_low {
+    box-shadow: $shadow-green;
+    border: 1px solid $color-green;
+  }
 
-    &_medium {
-        box-shadow: $shadow-blue;
-        border: 1px solid $color-blue;
-    }
+  &_medium {
+    box-shadow: $shadow-blue;
+    border: 1px solid $color-blue;
+  }
 
-    &_high {
-        box-shadow: $shadow-red;
-        border: 1px solid $color-red;
-    }
+  &_high {
+    box-shadow: $shadow-red;
+    border: 1px solid $color-red;
+  }
 
-    &__id {
-        @include clampText($text-m-small, $text-small);
-        margin-bottom: 5px;
-    }
+  &__id {
+    @include clampText($text-m-small, $text-small);
+    margin-bottom: 5px;
+  }
 
-    &__title {
-        @include clampText($text-m-main, $text-main);
-        margin-top: 5px;
-    }
+  &__title {
+    @include clampText($text-m-main, $text-main);
+    margin-top: 5px;
+  }
 }
 
 @media (max-width: $tablet) {
-    .board-task {
-        &:last-of-type {
-            margin-bottom: 10px;
-        }
+  .board-task {
+    &:last-of-type {
+      margin-bottom: 10px;
     }
+  }
 }
