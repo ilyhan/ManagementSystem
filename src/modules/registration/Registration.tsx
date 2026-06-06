@@ -29,7 +29,7 @@ const Registration = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    mutate(formData);
+    mutate({ ...formData, role: 'teamlead' });
   };
 
   const handleCheck = () => {

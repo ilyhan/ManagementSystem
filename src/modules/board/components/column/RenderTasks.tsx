@@ -20,7 +20,6 @@ const RenderTasks = ({ tasks, status }: IRenderTasksProps) => {
   const handleClose = () => {
     setOpen(false);
   };
-  console.log(status);
 
   return (
     <>

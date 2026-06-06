@@ -1,6 +1,44 @@
+@use '@/common/styles/styleConstants.scss' as *;
+@use '@/common/styles/mixin.scss' as *;
+
 .board-user {
   &__list {
     list-style: none;
     display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    background-color: $color-grey-lighter;
+    border-radius: $border-m;
+    padding: 4px 10px 4px 4px;
+    display: flex;
+    align-items: center;
+    transition: $transition-fast;
+    cursor: pointer;
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        background-color: $color-grey-lightest;
+      }
+    }
+
+    &_active {
+      background-color: $color-black;
+      color: $color-total-white;
+
+      .user-info__name {
+        color: $color-total-white;
+      }
+
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          background-color: $color-grey-active;
+        }
+      }
+    }
   }
 }

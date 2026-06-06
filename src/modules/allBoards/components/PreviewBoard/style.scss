@@ -2,25 +2,71 @@
 @use '@/common/styles/mixin.scss' as *;
 
 .preview-board {
-  width: 100%;
-  border: 2px solid $color-black;
+  background-color: $color-total-white;
   border-radius: $border-m;
-  padding: 20px 15px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 15px;
+  padding: 18px 20px;
+  box-shadow:
+    rgba(0, 0, 0, 0.04) 0px 3px 5px,
+    rgba(0, 0, 0, 0.03) 0px 1px 2px;
+  border-left: 4px solid $color-black;
+  transition: $transition-fast;
 
-  &__title {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      box-shadow:
+        rgba(0, 0, 0, 0.08) 0px 6px 12px,
+        rgba(0, 0, 0, 0.04) 0px 2px 4px;
+      translate: 0 -2px;
+    }
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+  }
+
+  &__name {
     @include clampText($text-m-main, $text-main);
+    font-weight: 600;
+    color: $color-total-black;
+    margin: 0;
+    @include textOverflow;
+  }
+
+  &__badge {
+    @include clampText($text-m-small, $text-small);
+    color: $color-grey;
+    background-color: $color-grey-lighter;
+    padding: 2px 8px;
+    border-radius: $border-s;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 80%;
+    flex-shrink: 0;
+  }
+
+  &__description {
+    @include clampText($text-m-small, $text-small);
+    color: $color-grey;
+    margin: 8px 0 0;
+    line-height: 1.4;
   }
 
   &__link {
     @include clampText($text-m-small, $text-small);
+    color: $color-black;
+    text-decoration: none;
+    font-weight: 500;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: $transition-fast;
 
     @media (hover: hover) and (pointer: fine) {
       &:hover {
@@ -32,12 +78,15 @@
 
 @media (max-width: $mobile) {
   .preview-board {
-    flex-direction: column;
-    align-items: start;
-    gap: 5px;
+    &__top {
+      flex-direction: column;
+      align-items: flex-start;
+    }
 
-    &__title {
-      max-width: 100%;
+    &__info {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
     }
   }
 }

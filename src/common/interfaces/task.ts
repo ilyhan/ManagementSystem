@@ -22,4 +22,5 @@ export interface ITask {
   title: string;
   assignee: IAssignee;
   current_name: string;
+  assignee_id?: number;
 }

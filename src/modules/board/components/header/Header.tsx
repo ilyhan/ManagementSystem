@@ -9,9 +9,18 @@ interface IBoardHeaderProps {
   description: string;
   boardId: number;
   name_id?: string;
+  selectedUserId: number | null;
+  onUserSelect: (userId: number | null) => void;
 }
 
-const Header = ({ title, description, boardId, name_id }: IBoardHeaderProps) => {
+const Header = ({
+  title,
+  description,
+  boardId,
+  name_id,
+  selectedUserId,
+  onUserSelect,
+}: IBoardHeaderProps) => {
   const [open, setOpen] = useState(false);
   const { auth } = useAuth();
 
@@ -23,11 +32,15 @@ const Header = ({ title, description, boardId, name_id }: IBoardHeaderProps) => 
 
       <p className="board-header__description">{description}</p>
 
-      <BoardUsers boardId={boardId} />
+      <div className="board-header__bottom">
+        <BoardUsers boardId={boardId} selectedUserId={selectedUserId} onUserSelect={onUserSelect} />
 
-      {auth.user?.role == 'teamlead' && (
-        <button onClick={() => setOpen(true)}>Добавить пользователя</button>
-      )}
+        {auth.user?.role == 'teamlead' && (
+          <button className="board-header__add-user-btn" onClick={() => setOpen(true)}>
+            Добавить пользователя
+          </button>
+        )}
+      </div>
 
       {open && <AddUserModal open={open} onClose={() => setOpen(false)} boardId={boardId} />}
     </header>

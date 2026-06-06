@@ -2,38 +2,134 @@
 @use '@/common/styles/mixin.scss' as *;
 
 .preview-task {
-  width: 100%;
-  border: 2px solid $color-black;
+  background-color: $color-total-white;
   border-radius: $border-m;
-  padding: 10px 20px;
+  padding: 16px 20px;
+  box-shadow:
+    rgba(0, 0, 0, 0.04) 0px 3px 5px,
+    rgba(0, 0, 0, 0.03) 0px 1px 2px;
+  border-left: 4px solid $color-grey;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 15px;
+  transition: $transition-fast;
 
-  &__content {
-    max-width: 80%;
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      box-shadow:
+        rgba(0, 0, 0, 0.08) 0px 6px 12px,
+        rgba(0, 0, 0, 0.04) 0px 2px 4px;
+      translate: 0 -2px;
+    }
+  }
+
+  &_high {
+    border-left-color: $color-red;
+  }
+
+  &_medium {
+    border-left-color: $color-blue;
+  }
+
+  &_low {
+    border-left-color: $color-green;
+  }
+
+  &__body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+
+  &__id {
+    @include clampText($text-m-small, $text-small);
+    color: $color-grey;
+    font-weight: 500;
+    font-family: monospace;
+  }
+
+  &__status {
+    @include clampText($text-m-small, $text-small);
+    padding: 2px 8px;
+    border-radius: 999px;
+    color: $color-total-white;
+    font-weight: 500;
+    white-space: nowrap;
+
+    &_backlog {
+      background-color: $color-grey;
+    }
+
+    &_inprogress {
+      background-color: $color-blue;
+    }
+
+    &_done {
+      background-color: $color-green;
+    }
   }
 
   &__title {
     @include clampText($text-m-main, $text-main);
-    @include textOverflow;
+    font-weight: 600;
+    color: $color-total-black;
+    margin: 0 0 4px;
   }
 
-  &__board {
+  &__description {
     @include clampText($text-m-small, $text-small);
-    @include textOverflow;
     color: $color-grey;
+    margin: 0 0 10px;
+    line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  &__board-name {
+    @include clampText($text-m-small, $text-small);
+    color: $color-grey;
+    background-color: $color-grey-lighter;
+    padding: 2px 8px;
+    border-radius: $border-s;
   }
 
   &__button {
     @include clampText($text-m-small, $text-small);
     @include resetButton;
+    color: $color-black;
+    font-weight: 500;
+    padding: 6px 14px;
+    border: 2px solid $color-black;
+    border-radius: $border-s;
+    transition: $transition-fast;
+    flex-shrink: 0;
 
     @media (hover: hover) and (pointer: fine) {
       &:hover {
-        color: $color-grey;
+        background-color: $color-black;
+        color: $color-total-white;
       }
+    }
+
+    &:active {
+      scale: 0.97;
     }
   }
 }
@@ -41,11 +137,10 @@
 @media (max-width: $mobile) {
   .preview-task {
     flex-direction: column;
-    align-items: start;
-    gap: 7px;
+    gap: 10px;
 
-    &__content {
-      max-width: 100%;
+    &__button {
+      align-self: flex-end;
     }
   }
 }

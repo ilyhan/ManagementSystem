@@ -1,4 +1,4 @@
-import Modal from '@/common/ui/modal/Modal';
+import { Drawer } from '@/common/ui/drawer';
 import TaskForm from '@/common/components/taskForm/TaskForm';
 import { ITaskFormData } from '@/common/interfaces/form';
 import '@/common/components/taskModal/style.scss';
@@ -33,11 +33,13 @@ const CreateModal = ({ open, onClose, board_id, defaultData }: ICreateModalProps
   };
 
   return (
-    <Modal isOpen={open} onClose={onClose}>
-      <h2 className="task-modal__title">Создание задачи</h2>
+    <Drawer open={open} onClose={onClose}>
+      <div className="task-modal">
+        <h2 className="task-modal__title">Создание задачи</h2>
 
-      <TaskForm onSubmit={handleCreate} initial={initialForm} board_id={board_id} />
-    </Modal>
+        <TaskForm onSubmit={handleCreate} initial={initialForm} board_id={board_id} />
+      </div>
+    </Drawer>
   );
 };
 

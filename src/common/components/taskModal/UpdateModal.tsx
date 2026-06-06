@@ -1,4 +1,4 @@
-import Modal from '@/common/ui/modal/Modal';
+import { Drawer } from '@/common/ui/drawer';
 import TaskForm from '@/common/components/taskForm/TaskForm';
 import { ITaskFormData, IUpdateTaskFormData } from '@/common/interfaces/form';
 import '@/common/components/taskModal/style.scss';
@@ -55,18 +55,20 @@ const UpdateModal = ({ taskId, boardId, open, onClose }: IUpdateModalProps) => {
   };
 
   return (
-    <Modal isOpen={open} onClose={onClose}>
-      <h2 className="task-modal__title">Редактирование задачи</h2>
+    <Drawer open={open} onClose={onClose}>
+      <div className="task-modal">
+        <h2 className="task-modal__title">Редактирование задачи</h2>
 
-      {isLoading && <Loader style={{ minHeight: '100px' }} />}
-      {data && <TaskForm onSubmit={handleCreate} initial={initialForm} board_id={data.board_id} />}
+        {isLoading && <Loader style={{ minHeight: '100px' }} />}
+        {data && <TaskForm onSubmit={handleCreate} initial={initialForm} board_id={data.board_id} />}
 
-      {boardId && (
-        <Link to={`/board/${boardId}`} className="task-modal__link">
-          К доске
-        </Link>
-      )}
-    </Modal>
+        {boardId && (
+          <Link to={`/board/${boardId}`} className="task-modal__link">
+            К доске
+          </Link>
+        )}
+      </div>
+    </Drawer>
   );
 };
 
