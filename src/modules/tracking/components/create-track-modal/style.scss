@@ -1,6 +1,48 @@
+@use '@/common/styles/styleConstants.scss' as *;
+@use '@/common/styles/mixin.scss' as *;
+
 .create-track-form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
   margin-top: 40px;
+
+  &__title {
+    @include clampText($text-m-title, $text-title);
+    font-weight: 600;
+    color: $color-total-black;
+    margin: 0;
+  }
+
+  &__date {
+    @include clampText($text-m-main, $text-main);
+    color: $color-grey;
+    margin: 0 0 5px;
+    text-transform: capitalize;
+  }
+
+  .textarea {
+    height: 100px;
+    padding-top: 10px;
+  }
+
+  .input[type='number'] {
+    width: 120px;
+  }
+
+  .button {
+    align-self: flex-start;
+    margin-top: 5px;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  &__error {
+    @include clampText($text-m-small, $text-small);
+    color: $color-dark-red;
+    margin: -5px 0 0;
+  }
 }

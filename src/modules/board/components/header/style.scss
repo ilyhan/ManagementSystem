@@ -2,6 +2,8 @@
 @use '@/common/styles/mixin.scss' as *;
 
 .board-header {
+  margin-bottom: 15px;
+
   &__title {
     @include clampText($text-m-title, $text-title);
     color: $color-total-black;
@@ -11,5 +13,47 @@
 
   &__description {
     @include clampText($text-m-main, $text-main);
+    color: $color-total-black;
+    margin-bottom: 12px;
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  &__add-user-btn {
+    @include resetButton;
+    @include clampText($text-m-small, $text-small);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: $color-black;
+    font-weight: 500;
+    padding: 6px 14px;
+    border: 2px solid $color-black;
+    border-radius: $border-m;
+    transition: $transition-fast;
+
+    &::before {
+      content: '+';
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        background-color: $color-black;
+        color: $color-total-white;
+      }
+    }
+
+    &:active {
+      scale: 0.97;
+    }
   }
 }

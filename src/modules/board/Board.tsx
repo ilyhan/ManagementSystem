@@ -6,11 +6,13 @@ import Header from '@/modules/board/components/header/Header';
 import TasksTable from '@/modules/board/components/tasksTable/TasksTable';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import './style.scss';
 
 const Board = () => {
   const { id } = useParams();
   const { data, isSuccess, isError } = useGetAllBoards();
   const [board, setBoards] = useState<IPreviewBoard>();
+  const [selectedUserId, setSelectedUserId] = useState<number | null>(null);
 
   const toasts = useToast();
 
@@ -33,8 +35,11 @@ const Board = () => {
         description={board?.description ?? ''}
         name_id={board?.name_id}
         boardId={Number(id)}
+        selectedUserId={selectedUserId}
+        onUserSelect={setSelectedUserId}
       />
-      <TasksTable id={Number(id)} />
+
+      <TasksTable id={Number(id)} selectedUserId={selectedUserId} />
     </section>
   );
 };
