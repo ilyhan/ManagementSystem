@@ -1,0 +1,58 @@
+@use '@/common/styles/styleConstants.scss' as *;
+@use '@/common/styles/mixin.scss' as *;
+
+.chapter {
+    &__row {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 8px;
+        border-radius: $border-s;
+        cursor: pointer;
+
+        &_active {
+            background-color: $color-grey-lightest;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                background-color: $color-grey-lighter;
+            }
+        }
+    }
+
+    &__toggle {
+        @include resetButton;
+        font-size: 10px;
+        transition: $transition-fast;
+
+        &_open {
+            transform: rotate(90deg);
+        }
+    }
+
+    &__name {
+        @include textOverflow;
+        flex: 1;
+    }
+
+    &__actions {
+        display: none;
+        gap: 4px;
+
+        .chapter__row:hover & {
+            display: flex;
+        }
+    }
+
+    &__action {
+        @include resetButton;
+        color: $color-grey;
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                color: $color-total-black;
+            }
+        }
+    }
+}

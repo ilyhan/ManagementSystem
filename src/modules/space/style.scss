@@ -1,0 +1,52 @@
+@use '@/common/styles/styleConstants.scss' as *;
+@use '@/common/styles/mixin.scss' as *;
+
+.space {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 280px;
+    min-width: 280px;
+    height: 100%;
+    padding: 16px;
+    border-right: 2px solid $color-grey-lightest;
+    overflow-y: auto;
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid $color-grey-lightest;
+    }
+
+    &__title {
+        @include clampText($text-m-title, $text-title);
+        font-weight: 600;
+    }
+
+    &__description {
+        color: $color-grey;
+    }
+
+    &__header-actions {
+        display: flex;
+        gap: 8px;
+        margin-top: 6px;
+    }
+
+    &__tree-header {
+        display: flex;
+    }
+
+    &__tree {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        flex: 1;
+    }
+
+    &__empty {
+        color: $color-grey;
+    }
+}

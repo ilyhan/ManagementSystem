@@ -15,6 +15,9 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 import { RouteNames } from './lib';
+import { DocumentationPage } from '@/pages/DocumentationPage';
+import { SpacePage } from '@/pages/space-page';
+import { ChapterPage } from '@/pages/chapter-page';
 
 export default function RoutesProvider() {
   const routesProvider = createBrowserRouter(
@@ -28,6 +31,11 @@ export default function RoutesProvider() {
           <Route path={RouteNames.EMPLOYEE_ID} element={<EmployeePage />} />
           <Route path={RouteNames.TRACKER} element={<TrackingPage />} />
           <Route path={RouteNames.ISSUES} element={<IssuesPage />} />
+          <Route path={RouteNames.DOCUMENTATION} element={<DocumentationPage />} />
+          <Route path={RouteNames.SPACE} element={<SpacePage />}>
+            <Route index element={<div className="space-page__empty">Выберите раздел слева</div>} />
+            <Route path={RouteNames.CHAPTER} element={<ChapterPage />} />
+          </Route>
         </Route>
 
         <Route path={RouteNames.LOGIN} element={<LoginPage />} />
