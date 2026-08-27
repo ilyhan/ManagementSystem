@@ -1,0 +1,13 @@
+.documentation {
+    padding: 20px;
+
+    &__header {
+        margin-bottom: 16px;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}

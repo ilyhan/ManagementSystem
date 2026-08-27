@@ -1,0 +1,72 @@
+@use '@/common/styles/styleConstants.scss' as *;
+@use '@/common/styles/mixin.scss' as *;
+
+.chapter-view {
+    padding: 24px;
+    height: 100%;
+    overflow-y: auto;
+
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 16px;
+    }
+
+    &__title {
+        @include clampText($text-m-title, $text-title);
+        font-weight: 600;
+    }
+
+    &__actions {
+        display: flex;
+        gap: 8px;
+    }
+
+    &__edit {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    &__textarea.textarea {
+        min-height: 50vh;
+        font-family: monospace;
+
+        &_with-toolbar {
+            border-radius: 0 0 $border-s $border-s;
+        }
+    }
+
+    &__empty {
+        color: $color-grey;
+    }
+
+    &__content {
+        line-height: 1.6;
+
+        table {
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid $color-grey-lightest;
+            padding: 6px 10px;
+        }
+
+        pre {
+            background-color: $color-background;
+            padding: 12px;
+            border-radius: $border-s;
+            overflow-x: auto;
+        }
+
+        code {
+            background-color: $color-background;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+    }
+}

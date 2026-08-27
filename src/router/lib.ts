@@ -7,4 +7,7 @@ export const RouteNames = {
   ISSUES: 'issues',
   LOGIN: 'login',
   REGISTRATION: 'registration',
+  DOCUMENTATION: 'documentation',
+  SPACE: 'space/:id',
+  CHAPTER: 'chapter/:chapterId',
 } as const;

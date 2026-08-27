@@ -21,6 +21,10 @@ const NAV_LINKS = [
     value: RouteNames.EMPLOYEES,
   },
   {
+    title: 'Документация',
+    value: RouteNames.DOCUMENTATION,
+  },
+  {
     title: 'Трекер',
     value: RouteNames.TRACKER,
   },

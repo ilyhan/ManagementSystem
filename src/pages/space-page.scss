@@ -1,0 +1,14 @@
+.space-page {
+    display: flex;
+    height: 100vh;
+
+    &__content {
+        flex: 1;
+        overflow-y: auto;
+    }
+
+    &__empty {
+        padding: 24px;
+        color: rgba(144, 144, 144, 1);
+    }
+}
